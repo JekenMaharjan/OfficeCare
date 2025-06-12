@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+'use client'
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Link } from "lucide-react";
+
 
 const Index = () => {
   return (
@@ -16,7 +18,7 @@ const Index = () => {
         </CardHeader>
         
         <CardContent className="space-y-4">
-          <Link to="/register" className="block">
+          <Link href="/register" className="block">
             <Button className="w-full h-12 text-lg font-medium bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 transition-all duration-200 shadow-lg hover:shadow-xl">
               Get Started - Register Now
             </Button>
@@ -25,7 +27,7 @@ const Index = () => {
           <p className="text-center text-sm text-muted-foreground">
             Already have an account?{' '}
             <Link
-              to="/login"
+              href="/login"
               className="font-medium text-primary hover:underline transition-colors"
             >
               Sign in here
