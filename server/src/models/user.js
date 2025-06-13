@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
-const blogSchema = new Schema({
+const userSchema = new Schema({
   email: String, // String is shorthand for {type: String}
   firstName: String,
   lastName: String,
@@ -10,3 +10,6 @@ const blogSchema = new Schema({
   password: String,
   confirmPassword: String
 });
+
+const User = mongoose.model('User',userSchema);
+export default User;
