@@ -11,14 +11,15 @@ const initialState = {
 }
 
 export const userSlice = createSlice({
-    name: 'box',
+    name: 'user',
     initialState: initialState,
     reducers: {
         logoutUser: state => {
             return initialState
         },
         addLoginDetails: (state, action) => {
-            const { email, firstName, lastName, phoneNumber, location, token, isLoggedIn } = action.payload
+            const { token, isLoggedIn } = action.payload
+            const { email, firstName, lastName, phoneNumber, location, _id } = action.payload.user
             return{
                 ...state,
                 email: email,
@@ -27,7 +28,8 @@ export const userSlice = createSlice({
                 phoneNumber: phoneNumber,
                 location: location,
                 token: token,
-                isLoggedIn: isLoggedIn
+                isLoggedIn: isLoggedIn,
+                _id: _id
             }
         }
     }
