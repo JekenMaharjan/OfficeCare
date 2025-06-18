@@ -221,7 +221,7 @@ const Register = () => {
                   <ErrorMessage name="confirmPassword" component="p" className="text-sm text-red-500" />
                 </div>
 
-                <Button type="submit" disabled={isSubmitting} className="w-full">
+                <Button type="submit" disabled={isSubmitting} className="w-full cursor-pointer">
                   {isSubmitting ? "Creating Account..." : "Create Account"}
                 </Button>
 

@@ -116,14 +116,14 @@ const Signin = () => {
                 <div className="text-right">
                   <button
                     type="button"
-                    className="text-sm text-blue-600 hover:underline"
+                                      className="text-sm text-blue-600 hover:underline cursor-pointer"
                     onClick={() => toast("Password reset functionality coming soon!")}
                   >
                     Forgot your password?
                   </button>
                 </div>
 
-                <Button type="submit" disabled={isSubmitting} className="w-full">
+                              <Button type="submit" disabled={isSubmitting} className="w-full cursor-pointer">
                   {isSubmitting ? "Signing In..." : "Sign In"}
                 </Button>
 
@@ -133,7 +133,7 @@ const Signin = () => {
                     <button
                       type="button"
                       onClick={() => (window.location.href = "/register")}
-                      className="text-blue-600 hover:underline"
+                                          className="text-blue-600 hover:underline cursor-pointer"
                     >
                       Create account
                     </button>
