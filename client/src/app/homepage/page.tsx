@@ -1,7 +1,7 @@
 'use client'
 
 import Header from "@/components/Header";
-import Hero from "@/components/Hero";
+import Hero from "@/components/HeroSection";
 import ProductCategories from "@/components/ProductCategories";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import Newsletter from "@/components/Newsletter";
