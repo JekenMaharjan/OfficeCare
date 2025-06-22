@@ -1,39 +1,96 @@
 
 # OfficeCare (E-commerce App) - MERN Stack Project
 
-## Overview
+## 📑 Table of Contents
+- [About](#about)
+- [Features](#features)
+- [Technology Stack](#technology-stack)
+- [Project Phases & Progress](#project-phases--progress)
+- [Getting Started](#getting-started)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+
+---
+
+## 🧾 About
 
 Office Care will be an integrated e-commerce application that tries to meet your every need for everything related to offices, from furniture and stationery to technology products. This app will facilitate seamless shopping for all kinds of office needs for an individual or even a business enterprise.
 
+---
 
-## Features
+## 🚀 Features
 
-### Phase 1
-- **Add Products:** This feature allows admins to add new products into the store.
-- **User View/Search Products:** It allows users to view and find specific products. 
-- **Wishlist:** Users can save favorite products for later.
-- **Cart:** Facilitates adding products to the shopping cart.
-- **Confirm Order:** Users can place orders for products in the cart.
+### Core Features:
+- Product Management (Add, View, Wishlist)
+- Cart and Order Confirmation
+- Review System (Upcoming)
+- Business Bulk Orders
+- Product Recommendations
+- Real-time Order Tracking
 
-### Phase 2
-- **Add Reviews to Products:** Users can leave reviews for the products they have purchased.
-- **Product Recommendation:** Display personalized recommended products based on the user's behavior.
-- **Order Tracking:** Allows the user to track the order in real time.
-- **Bulk Order for Business:** Businesses can place bulk orders with an applicable discount on products.
+---
 
+## 🛠️ Technology Stack
 
+### 🔹 Front-End:
+- **React**
+- **Next.js**
+- **Tailwind CSS**
 
-## Getting Started
-Follow the steps below to set up the OfficeCare e-commerce app on your local machine:
+### 🔸 Back-End:
+- **Node.js**
+- **Express.js**
 
-### Prerequisites
- 
-Ensure you have the following installed:
-- Node.js: [Download and install Node.js](https://nodejs.org/en)
-- MongoDB: [Download and install MongoDB](https://www.mongodb.com/)
-- Git: [Download and install Git](https://git-scm.com/)
+### 🗃️ Database:
+- **MongoDB**
 
-### Installation
+---
+
+## 📈 Project Phases & Progress
+
+Development is structured into two major phases.
+
+---
+
+### 🟢 **Phase 1: Core Shopping Experience** ✅ _[Completed]_
+
+🎯 Goal: Set up core functionality including product listings, cart, wishlist, and order placement.
+
+#### ✅ Features
+- [x] Add Products (Admin)
+- [x] View/Search Products
+- [x] Wishlist Functionality
+- [x] Add to Cart
+- [x] Confirm Orders
+
+---
+
+### 🟡 **Phase 2: Advanced Features** ⏳ _[In Progress]_
+
+🎯 Goal: Add user engagement features, business bulk orders, and enhance user experience.
+
+#### ⬜ Features
+- [ ] Add Product Reviews
+- [ ] Product Recommendations
+- [ ] Real-time Order Tracking
+- [ ] Bulk Orders for Businesses with Discount Logic
+
+---
+
+## 🧰 Getting Started
+
+To run the project locally, follow the instructions below:
+
+### 📦 Prerequisites
+- [Node.js](https://nodejs.org/en)
+- [MongoDB](https://www.mongodb.com/)
+- [Git](https://git-scm.com/)
+
+---
+
+### 🔧 Installation Steps
+
 1. **Clone the Repository**
     
     Open your terminal and clone the repository:
@@ -93,15 +150,9 @@ Ensure you have the following installed:
 - Front-End: The React.js/Next.js app will typically be available at http://localhost:3000.
 - Back-End: The Express.js server will run on http://localhost:5000 or the port specified in your .env file.
 
+---
 
-## Technology Stack
-
-- **Front-End:** React, Next.js, TailwindCSS
-- **Back-End:** Node.js, Express.js
-- **Database:** MongoDB
-
-
-## Contributing
+## 🤝 Contributing
 
 Contributions are always welcome! Follow these steps to contribute:
 1. Fork the repository.
@@ -116,14 +167,15 @@ Contributions are always welcome! Follow these steps to contribute:
     git push origin feature-name
 5. Open a pull request.
 
+---
 
-
-## License
+## 📄 License
 
 This project is licensed under the [MIT License](https://choosealicense.com/licenses/mit/).
 
+---
 
-## Contact
+## 📬 Contact
 
 For any inquiries, reach out to us at:
 - **Email:** [JekenMaharjan](maharjanjeken@gmail.com)
