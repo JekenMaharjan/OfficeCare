@@ -50,7 +50,7 @@ const Signin = () => {
 
             const { data } = await axios.post("http://localhost:4000/signin", values)
             if(data?.isLoggedIn){
-                router.push('/homepage')
+                router.push('/')
                 // router.back();
             }
             //   toast("Welcome back! You have successfully signed in.")

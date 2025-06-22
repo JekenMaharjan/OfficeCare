@@ -33,7 +33,7 @@ const Header = () => {
                                 placeholder="Search for office appliances..."
                                 className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                             />
-                            <button className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-[#A32CDF] to-[#106AD2] text-white p-2 rounded-md hover:opacity-90 transition-opacity">
+                            <button className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-[#A32CDF] to-[#106AD2] text-white p-2 rounded-md hover:opacity-90 transition-opacity cursor-pointer">
                                 <Search size={20} />
                             </button>
                         </div>
@@ -41,13 +41,19 @@ const Header = () => {
 
                     {/* Right icons */}
                     <div className="flex items-center space-x-6">
-                        <button className="relative hover:text-purple-600 transition-colors">
+                        <button className='bg-gradient-to-r from-[#A32CDF] to-[#106AD2] text-white p-2 rounded-xl'>
+                            <a href="/register">SignUp</a>
+                        </button>
+                        <button className='bg-gradient-to-r from-[#A32CDF] to-[#106AD2] text-white p-2 rounded-xl'>
+                            <a href="/signin">SignIn</a>
+                        </button>
+                        <button className="cursor-pointer relative hover:text-purple-600 transition-colors">
                             <Heart size={24} />
                         </button>
-                        <button className="relative hover:text-purple-600 transition-colors">
+                        <button className="cursor-pointer relative hover:text-purple-600 transition-colors">
                             <User size={24} />
                         </button>
-                        <button className="relative hover:text-purple-600 transition-colors">
+                        <button className="cursor-pointer relative hover:text-purple-600 transition-colors">
                             <ShoppingCart size={24} />
                             <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                                 3

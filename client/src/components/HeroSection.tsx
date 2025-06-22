@@ -18,10 +18,10 @@ const HeroSection = () => {
                             Everything you need to create the perfect workspace. From high-tech appliances to essential supplies.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
-                            <button className="bg-white text-purple-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg">
+                            <button className="bg-white text-purple-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg cursor-pointer">
                                 Shop Now
                             </button>
-                            <button className="border-2 border-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition-colors">
+                            <button className="border-2 border-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition-colors cursor-pointer">
                                 View Catalog
                             </button>
                         </div>

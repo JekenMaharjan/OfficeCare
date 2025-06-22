@@ -26,7 +26,7 @@ const SpecialOffers = () => {
                                     Save $400
                                 </span>
                             </div>
-                            <button className="bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg">
+                            <button className="cursor-pointer bg-white text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors shadow-lg">
                                 Shop Bundle
                             </button>
                         </div>
@@ -39,7 +39,7 @@ const SpecialOffers = () => {
                                 <div>
                                     <h4 className="text-xl font-bold mb-2">Free Shipping</h4>
                                     <p className="text-white/90 mb-4">On orders over $100</p>
-                                    <button className="bg-white text-green-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                                    <button className="cursor-pointer bg-white text-green-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
                                         Shop Now
                                     </button>
                                 </div>
@@ -52,7 +52,7 @@ const SpecialOffers = () => {
                                 <div>
                                     <h4 className="text-xl font-bold mb-2">Extended Warranty</h4>
                                     <p className="text-white/90 mb-4">3 years protection plan</p>
-                                    <button className="bg-white text-orange-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                                    <button className="bg-white text-orange-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors cursor-pointer">
                                         Learn More
                                     </button>
                                 </div>

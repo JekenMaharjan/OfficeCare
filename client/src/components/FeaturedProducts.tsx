@@ -66,7 +66,7 @@ const FeaturedProducts = () => {
                             className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden"
                         >
                             <div className="relative p-6 bg-gradient-to-br from-gray-50 to-gray-100">
-                                <button className="absolute top-4 right-4 p-2 rounded-full bg-white shadow-md hover:bg-red-50 hover:text-red-500 transition-colors">
+                                <button className="cursor-pointer absolute top-4 right-4 p-2 rounded-full bg-white shadow-md hover:bg-red-50 hover:text-red-500 transition-colors">
                                     <Heart size={18} />
                                 </button>
                                 {product.badge && (
@@ -115,7 +115,7 @@ const FeaturedProducts = () => {
                                     </div>
                                 </div>
 
-                                <button className="w-full bg-gradient-to-r from-[#A32CDF] to-[#106AD2] text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                                <button className="cursor-pointer w-full bg-gradient-to-r from-[#A32CDF] to-[#106AD2] text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                                     Add to Cart
                                 </button>
                             </div>
@@ -124,7 +124,7 @@ const FeaturedProducts = () => {
                 </div>
 
                 <div className="text-center mt-12">
-                    <button className="bg-white border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-purple-600 hover:text-white transition-colors">
+                    <button className="cursor-pointer bg-white border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-purple-600 hover:text-white transition-colors">
                         View All Products
                     </button>
                 </div>
