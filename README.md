@@ -2,6 +2,7 @@
 # OfficeCare (E-commerce App) - MERN Stack Project
 
 ## 📑 Table of Contents
+
 - [About](#about)
 - [Features](#features)
 - [Technology Stack](#technology-stack)
@@ -49,32 +50,48 @@ Office Care will be an integrated e-commerce application that tries to meet your
 
 ## 📈 Project Phases & Progress
 
-Development is structured into two major phases.
+Development is structured into distinct phases for better planning and tracking.
 
----
+### 🟢 **Phase 1: Core Shopping Features** ⏳ _(In Progress)_
 
-### 🟢 **Phase 1: Core Shopping Experience** ✅ _[Completed]_
+🎯 Goal: Establish the basic shopping system including product listings, cart, wishlist, and order confirmation.
 
-🎯 Goal: Set up core functionality including product listings, cart, wishlist, and order placement.
+#### Frontend (Client Side)
+- ✅ Implemented User Login page.
+- ✅ Implemented User Register page.
+- ✅ Basic Logout functionality.
+- ⏳ Add Product UI (Admin Panel)
+- ⏳ Product Listing & Search Page
+- ⏳ Wishlist Functionality
+- ⏳ Shopping Cart
+- ⏳ Confirm Order Page
 
-#### ✅ Features
-- [x] Add Products (Admin)
-- [x] View/Search Products
-- [x] Wishlist Functionality
-- [x] Add to Cart
-- [x] Confirm Orders
+#### Backend (Server Side)
+- ✅ User Registration Endpoint: Allows new users to sign up.
+    - Checks for existing emails.
+    - Hashes passwords securely using bcrypt.
+    - Creates new user entries in the database.
+- ⏳ Add Product API (Admin)
+- ⏳ Get/Search Products API
+- ⏳ Wishlist Handling
+- ⏳ Cart Management APIs
+- ⏳ Order Placement Endpoint
 
----
+### 🟡 **Phase 2: Advanced User & Business Features** ⏳ _(In Progress)_
 
-### 🟡 **Phase 2: Advanced Features** ⏳ _[In Progress]_
+🎯 Goal: Build on top of the base by introducing more interactive and business-oriented functionality.
 
-🎯 Goal: Add user engagement features, business bulk orders, and enhance user experience.
+#### ⬜ Frontend (Client Side)
+- ⏳ Product Review UI
+- ⏳ Recommended Products Component
+- ⏳ Order Tracking UI
+- ⏳ Bulk Order UI for Business Accounts
 
-#### ⬜ Features
-- [ ] Add Product Reviews
-- [ ] Product Recommendations
-- [ ] Real-time Order Tracking
-- [ ] Bulk Orders for Businesses with Discount Logic
+#### ⬜ Backend (Server Side)
+- ⏳ Add Product Review Endpoint
+- ⏳ Logic for Product Recommendations
+- ⏳ Real-Time Order Tracking API
+- ⏳ Bulk Order Discount Logic
 
 ---
 
@@ -180,3 +197,19 @@ This project is licensed under the [MIT License](https://choosealicense.com/lice
 For any inquiries, reach out to us at:
 - **Email:** [JekenMaharjan](maharjanjeken@gmail.com)
 - **Github:** [Jekode](https://github.com/JekenMaharjan)
+
+---
+
+## 🌐 Connect with Me
+
+> 🌐 Portfolio: *Coming soon*
+
+> [![LinkedIn](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/jekenmaharjan/)  [![GitHub](https://img.shields.io/badge/-GitHub-black?style=flat-square&logo=github)](https://github.com/JekenMaharjan)  [![Twitter](https://img.shields.io/badge/-Twitter-1DA1F2?style=flat-square&logo=twitter)](https://x.com/JekenMaharjan)  [![Linktree](https://img.shields.io/badge/-Connect-43E660?style=flat-square&logo=linktree&logoColor=white)](https://linktr.ee/JekenMaharjan)
+
+📬 Email: [maharjanjeken@gmail.com](mailto:maharjanjeken@gmail.com)
+
+---
+
+> ⚡ *Fun Fact:* I go by the nickname **Jekode** — blending code with my name 😊
+
+> ⭐️ _Thanks for visiting my profile!_
