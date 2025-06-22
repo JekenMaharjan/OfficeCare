@@ -54,7 +54,7 @@ Development is structured into distinct phases for better planning and tracking.
 
 ### 🟢 **Phase 1: Core Shopping Features** ⏳ _(In Progress)_
 
-🎯 Goal: Establish the basic shopping system including product listings, cart, wishlist, and order confirmation.
+🎯 Goal: Establish the foundation of the e-commerce platform by implementing essential user authentication, product management, and ordering capabilities. This phase focuses on building a seamless user flow — from login and registration to product browsing, cart handling, and placing an order.
 
 #### ⏳ Frontend (Client Side)
 - ✅ Implemented User Login page.
