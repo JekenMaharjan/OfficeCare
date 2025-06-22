@@ -35,16 +35,16 @@ Office Care will be an integrated e-commerce application that tries to meet your
 ## 🛠️ Technology Stack
 
 ### 🔹 Front-End:
-        - React
-        - Next.js
-        - Tailwind CSS
+- React
+- Next.js
+- Tailwind CSS
 
 ### 🔸 Back-End:
-        - Node.js
-        - Express.js
+- Node.js
+- Express.js
 
 ### 🗃️ Database:
-        - MongoDB
+- MongoDB
 
 ---
 
