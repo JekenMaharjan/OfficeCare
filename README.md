@@ -57,46 +57,46 @@ Development is structured into distinct phases for better planning and tracking.
 🎯 Goal: Establish the basic shopping system including product listings, cart, wishlist, and order confirmation.
 
 #### ⏳ Frontend (Client Side)
-✅ Implemented User Login page.
-✅ Implemented User Register page.
-✅ Basic Logout functionality.
-⏳ Add Product UI (Admin Panel)
-⏳ Product Listing & Search Page
-⏳ Wishlist Functionality
-⏳ Shopping Cart
-⏳ Confirm Order Page
+- ✅ Implemented User Login page.
+- ✅ Implemented User Register page.
+- ✅ Basic Logout functionality.
+- ⏳ Add Product UI (Admin Panel)
+- ⏳ Product Listing & Search Page
+- ⏳ Wishlist Functionality
+- ⏳ Shopping Cart
+- ⏳ Confirm Order Page
 
 #### ⏳ Backend (Server Side)
-✅ User Registration Endpoint: Allows new users to sign up.
+- ✅ User Registration Endpoint: Allows new users to sign up.
     - Checks for existing emails.
     - Hashes passwords securely using bcrypt.
     - Creates new user entries in the database.
-✅ User Login Endpoint: Authenticates users.
+- ✅ User Login Endpoint: Authenticates users.
     - Verifies email existence.
     - Compares provided password with hashed password with bcrypt.
     - Generates a JWT upon successful login.
-✅ Get All Users Endpoint: (For internal use/testing) Retrieves a list of all registered users.
-⏳ Add Product API (Admin)
-⏳ Get/Search Products API
-⏳ Wishlist Handling
-⏳ Cart Management APIs
-⏳ Order Placement Endpoint
+- ✅ Get All Users Endpoint: (For internal use/testing) Retrieves a list of all registered users.
+- ⏳ Add Product API (Admin)
+- ⏳ Get/Search Products API
+- ⏳ Wishlist Handling
+- ⏳ Cart Management APIs
+- ⏳ Order Placement Endpoint
 
 ### 🟡 **Phase 2: Advanced User & Business Features** ⏳ _(In Progress)_
 
 🎯 Goal: Build on top of the base by introducing more interactive and business-oriented functionality.
 
 #### ⏳ Frontend (Client Side)
-    ⏳ Product Review UI
-    ⏳ Recommended Products Component
-    ⏳ Order Tracking UI
-    ⏳ Bulk Order UI for Business Accounts
+- ⏳ Product Review UI
+- ⏳ Recommended Products Component
+- ⏳ Order Tracking UI
+- ⏳ Bulk Order UI for Business Accounts
 
 #### ⏳ Backend (Server Side)
-    ⏳ Add Product Review Endpoint
-    ⏳ Logic for Product Recommendations
-    ⏳ Real-Time Order Tracking API
-    ⏳ Bulk Order Discount Logic
+- ⏳ Add Product Review Endpoint
+- ⏳ Logic for Product Recommendations
+- ⏳ Real-Time Order Tracking API
+- ⏳ Bulk Order Discount Logic
 
 ---
 
