@@ -1,18 +1,6 @@
 
 # OfficeCare (E-commerce App) - MERN Stack Project
 
-## 📑 Table of Contents
-
-- [About](#about)
-- [Features](#features)
-- [Technology Stack](#technology-stack)
-- [Project Phases & Progress](#project-phases--progress)
-- [Getting Started](#getting-started)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
-
----
 
 ## 🧾 About
 
