@@ -12,7 +12,6 @@ const Header = () => {
                     </div>
                     <div className="flex items-center space-x-4">
                         <span className="text-gray-600">Account</span>
-                        <span className="text-gray-600">Track Order</span>
                         <span className="text-gray-600">Help</span>
                     </div>
                 </div>

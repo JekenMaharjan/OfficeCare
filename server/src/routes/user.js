@@ -35,7 +35,7 @@ userRouter.post('/signin', async (req, res) => {
     }
 
     // Used this to generate key: In terminal -> node -> require('crypto').randomBytes(64).toString('hex')
-    const token = await jwt.sign({email: email}, '8545cfcb4c25fe3a4feafe221d3115ac0311d9a6f108cf7edf4033b6938a312594ea194d3b837ca737a2d0526a1b45b41a16814fede10cf188b070e09a6d8240')
+    const token = await jwt.sign({email: email}, process.env.JWT_SECRET);
 
     return res.send({
         message: 'Logged in Successfully!!',

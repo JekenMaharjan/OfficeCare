@@ -48,7 +48,7 @@ const Signin = () => {
         try {
             await new Promise((resolve) => setTimeout(resolve, 1000))
 
-            const { data } = await axios.post("http://localhost:4000/signin", values)
+            const { data } = await axios.post(process.env.NEXT_PUBLIC_API_URL + "/signin", values)
             if(data?.isLoggedIn){
                 router.push('/')
                 // router.back();
@@ -75,6 +75,7 @@ const Signin = () => {
         style={{ background: "linear-gradient(135deg, #fed7aa 0%, #dbeafe 100%)" }}
         >
         <Card className="w-full max-w-md">
+                <img className="w-60 h-auto mx-auto my-auto" src="/OfficeCareLogo.png" alt="Office Care Logo" />
             <CardHeader className="text-center">
             <CardTitle className="text-2xl font-bold">Office Care</CardTitle>
             <p className="text-sm text-muted-foreground">Welcome back! Sign in to your account</p>
