@@ -2,7 +2,7 @@ import { Router } from "express";
 import Product from "../models/product.js"; // make sure this path is correct
 const productRouter = Router();
 
-productRouter.post('/add', async (req, res) => {
+productRouter.post('/addProduct', async (req, res) => {
     const existingProduct = await Product.findOne({ name: req.body.name });
     if (existingProduct) {
         return res.send('Product already exists!!');

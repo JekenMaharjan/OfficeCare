@@ -1,5 +1,6 @@
 import React from 'react';
 import { Star, Heart } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const products = [
     {
@@ -49,6 +50,13 @@ const products = [
 ];
 
 const FeaturedProducts = () => {
+
+    const router = useRouter();
+
+    const handleClick = () => {
+        router.push('/homepage');
+    };
+
     return (
         <section className="py-16 bg-gray-50">
             <div className="container mx-auto px-4">
@@ -124,7 +132,9 @@ const FeaturedProducts = () => {
                 </div>
 
                 <div className="text-center mt-12">
-                    <button className="cursor-pointer bg-white border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-purple-600 hover:text-white transition-colors">
+                    <button 
+                    onClick={handleClick}
+                    className="cursor-pointer bg-white border-2 border-purple-600 text-purple-600 px-8 py-3 rounded-lg font-semibold hover:bg-purple-600 hover:text-white transition-colors">
                         View All Products
                     </button>
                 </div>

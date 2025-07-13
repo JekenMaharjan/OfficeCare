@@ -60,16 +60,16 @@ const Register = () => {
 
   const handleSubmit = async (values: RegisterFormValues, { setSubmitting }: any) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+        await new Promise((resolve) => setTimeout(resolve, 1000))
 
         const { data } = await axios.post(process.env.NEXT_PUBLIC_API_URL + "/register", values)
-      toast(data)
+        toast(data)
 
-      console.log("Registration data:", values)
-      setSubmitting(false)
+        console.log("Registration data:", values)
+        setSubmitting(false)
     } catch (error) {
-      toast("Registration Failed Something went wrong. Please try again.")
-      setSubmitting(false)
+        toast("Registration Failed Something went wrong. Please try again.")
+        setSubmitting(false)
     }
   }
 
