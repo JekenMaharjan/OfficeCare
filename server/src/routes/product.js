@@ -12,4 +12,24 @@ productRouter.post('/addProduct', async (req, res) => {
     }
 });
 
+productRouter.get('/addProduct', async (req, res) => {
+    const products = await Product.find()
+    res.send(products)
+})
+
+productRouter.get('/addProduct/:id', async (req, res) => {
+    const products = await Product.findById(req.params.id)
+    res.send(products)
+})
+
+productRouter.delete('/addProduct/:id', async (req, res) => {
+    await Product.findByIdandDelete(req.params.id)
+    res.send('Product Deleted Successfully!!')
+})
+
+productRouter.put('/addProduct/:id', async (req, res) => {
+    await Product.findByIdandUpdate(req.params.id, req.body)
+    res.send('Product Updated Successfully!!')
+})
+
 export default productRouter;
