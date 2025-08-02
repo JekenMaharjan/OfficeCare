@@ -50,7 +50,7 @@ const Signin = () => {
 
             const { data } = await axios.post(process.env.NEXT_PUBLIC_API_URL + "/signin", values)
             if(data?.isLoggedIn){
-                router.push('/')
+                router.push('/homepage')
                 // router.back();
             }
             //   toast("Welcome back! You have successfully signed in.")

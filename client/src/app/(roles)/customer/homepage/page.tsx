@@ -20,7 +20,7 @@ const Homepage = () => {
             <div className='p-5 m-2 shadow-xl w-full h-full bg-gray-300 rounded-xl items-center text-center flex flex-col gap-y-1'>
                 {/* Product image */}
                 <img
-                    src={props.imageUrl}
+                    src={props.image}
                     alt={props.name}
                     className="w-full h-64 object-cover rounded-lg"
                 />
@@ -69,7 +69,7 @@ const Homepage = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 p-4">
                 {productList.map((item, id) => {
                     return (
-                        <ProductCard key={id} imageUrl={item.imageUrl} name={item.name} category={item.category} description={item.description} price={item.price} stock={item.stock} />
+                        <ProductCard key={id} image={item.image} name={item.name} category={item.category} description={item.description} price={item.price} stock={item.stock} />
                     )
                 })}
             </div>
