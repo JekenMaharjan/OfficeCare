@@ -40,9 +40,7 @@ const navigationItems = [
 export function AdminSidebar() {
 const { state } = useSidebar();
 const pathname = usePathname();
-// const currentPath = location.pathname;
 const currentPath = pathname;
-
 const collapsed = state === "collapsed";
 
 const isActive = (path: string) => {

@@ -93,138 +93,138 @@ const getPaymentColor = (payment: string) => {
 };
 
 return (
-    <div className="space-y-6">
-        <AdminLayout>
-    {/* Header */}
-    <div className="flex items-center justify-between">
-        <div>
-        <h1 className="text-3xl font-bold text-foreground">Orders</h1>
-        <p className="text-muted-foreground">Track and manage customer orders</p>
-        </div>
-        <Button variant="outline">
-        <Download className="mr-2 h-4 w-4" />
-        Export Orders
-        </Button>
-    </div>
-
-    {/* Order Stats */}
-    <div className="grid gap-6 md:grid-cols-4">
-        <Card className="shadow-elegant">
-        <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Total Orders</CardTitle>
-        </CardHeader>
-        <CardContent>
-            <div className="text-2xl font-bold text-foreground">1,248</div>
-            <p className="text-sm text-green-600">+8.2% from last month</p>
-        </CardContent>
-        </Card>
-        
-        <Card className="shadow-elegant">
-        <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Pending Orders</CardTitle>
-        </CardHeader>
-        <CardContent>
-            <div className="text-2xl font-bold text-orange-600">23</div>
-            <p className="text-sm text-muted-foreground">Awaiting processing</p>
-        </CardContent>
-        </Card>
-        
-        <Card className="shadow-elegant">
-        <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Shipped Today</CardTitle>
-        </CardHeader>
-        <CardContent>
-            <div className="text-2xl font-bold text-blue-600">15</div>
-            <p className="text-sm text-muted-foreground">Out for delivery</p>
-        </CardContent>
-        </Card>
-        
-        <Card className="shadow-elegant">
-        <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Revenue Today</CardTitle>
-        </CardHeader>
-        <CardContent>
-            <div className="text-2xl font-bold text-green-600">$2,450</div>
-            <p className="text-sm text-muted-foreground">From 18 orders</p>
-        </CardContent>
-        </Card>
-    </div>
-
-    {/* Orders Management */}
-    <Card className="shadow-elegant">
-        <CardHeader>
-        <CardTitle className="text-lg">Order Management</CardTitle>
-        </CardHeader>
-        <CardContent>
-        <div className="flex gap-4 mb-6">
-            <div className="relative flex-1">
-            <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-            <Input placeholder="Search orders..." className="pl-10" />
+    <AdminLayout>
+        <div className="space-y-6">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+            <div>
+            <h1 className="text-3xl font-bold text-foreground">Orders</h1>
+            <p className="text-muted-foreground">Track and manage customer orders</p>
             </div>
             <Button variant="outline">
-            <Filter className="mr-2 h-4 w-4" />
-            Filter
+            <Download className="mr-2 h-4 w-4" />
+            Export Orders
             </Button>
         </div>
 
-        {/* Orders Table */}
-        <div className="rounded-lg border">
-            <div className="grid grid-cols-8 gap-4 p-4 bg-muted/50 font-medium text-sm text-muted-foreground border-b">
-            <div>Order ID</div>
-            <div>Customer</div>
-            <div>Products</div>
-            <div>Total</div>
-            <div>Status</div>
-            <div>Payment</div>
-            <div>Date</div>
-            <div>Actions</div>
-            </div>
+        {/* Order Stats */}
+        <div className="grid gap-6 md:grid-cols-4">
+            <Card className="shadow-elegant">
+            <CardHeader className="pb-2">
+                <CardTitle className="text-sm font-medium text-muted-foreground">Total Orders</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <div className="text-2xl font-bold text-foreground">1,248</div>
+                <p className="text-sm text-green-600">+8.2% from last month</p>
+            </CardContent>
+            </Card>
             
-            {orders.map((order) => (
-            <div key={order.id} className="grid grid-cols-8 gap-4 p-4 items-center border-b hover:bg-accent/50 transition-colors">
-                <div className="font-medium text-primary">{order.id}</div>
-                
-                <div>
-                <p className="font-medium text-foreground">{order.customer}</p>
-                <p className="text-sm text-muted-foreground">{order.email}</p>
-                </div>
-                
-                <div>
-                <p className="text-sm text-foreground">{order.products[0]}</p>
-                {order.products.length > 1 && (
-                    <p className="text-xs text-muted-foreground">+{order.products.length - 1} more</p>
-                )}
-                </div>
-                
-                <div className="font-medium text-foreground">{order.total}</div>
-                
-                <div>
-                <Badge variant={getStatusColor(order.status)} className="flex items-center gap-1 w-fit">
-                    {getStatusIcon(order.status)}
-                    {order.status}
-                </Badge>
-                </div>
-                
-                <div>
-                <Badge variant={getPaymentColor(order.payment)}>
-                    {order.payment}
-                </Badge>
-                </div>
-                
-                <div className="text-sm text-muted-foreground">{order.date}</div>
-                
-                <div>
-                <Button variant="ghost" size="sm">
-                    <Eye className="h-4 w-4" />
-                </Button>
-                </div>
-            </div>
-            ))}
+            <Card className="shadow-elegant">
+            <CardHeader className="pb-2">
+                <CardTitle className="text-sm font-medium text-muted-foreground">Pending Orders</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <div className="text-2xl font-bold text-orange-600">23</div>
+                <p className="text-sm text-muted-foreground">Awaiting processing</p>
+            </CardContent>
+            </Card>
+            
+            <Card className="shadow-elegant">
+            <CardHeader className="pb-2">
+                <CardTitle className="text-sm font-medium text-muted-foreground">Shipped Today</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <div className="text-2xl font-bold text-blue-600">15</div>
+                <p className="text-sm text-muted-foreground">Out for delivery</p>
+            </CardContent>
+            </Card>
+            
+            <Card className="shadow-elegant">
+            <CardHeader className="pb-2">
+                <CardTitle className="text-sm font-medium text-muted-foreground">Revenue Today</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <div className="text-2xl font-bold text-green-600">$2,450</div>
+                <p className="text-sm text-muted-foreground">From 18 orders</p>
+            </CardContent>
+            </Card>
         </div>
-        </CardContent>
-    </Card>
+
+        {/* Orders Management */}
+        <Card className="shadow-elegant">
+            <CardHeader>
+            <CardTitle className="text-lg">Order Management</CardTitle>
+            </CardHeader>
+            <CardContent>
+            <div className="flex gap-4 mb-6">
+                <div className="relative flex-1">
+                <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                <Input placeholder="Search orders..." className="pl-10" />
+                </div>
+                <Button variant="outline">
+                <Filter className="mr-2 h-4 w-4" />
+                Filter
+                </Button>
+            </div>
+
+            {/* Orders Table */}
+            <div className="rounded-lg border">
+                <div className="grid grid-cols-8 gap-4 p-4 bg-muted/50 font-medium text-sm text-muted-foreground border-b">
+                <div>Order ID</div>
+                <div>Customer</div>
+                <div>Products</div>
+                <div>Total</div>
+                <div>Status</div>
+                <div>Payment</div>
+                <div>Date</div>
+                <div>Actions</div>
+                </div>
+                
+                {orders.map((order) => (
+                <div key={order.id} className="grid grid-cols-8 gap-4 p-4 items-center border-b hover:bg-accent/50 transition-colors">
+                    <div className="font-medium text-primary">{order.id}</div>
+                    
+                    <div>
+                    <p className="font-medium text-foreground">{order.customer}</p>
+                    <p className="text-sm text-muted-foreground">{order.email}</p>
+                    </div>
+                    
+                    <div>
+                    <p className="text-sm text-foreground">{order.products[0]}</p>
+                    {order.products.length > 1 && (
+                        <p className="text-xs text-muted-foreground">+{order.products.length - 1} more</p>
+                    )}
+                    </div>
+                    
+                    <div className="font-medium text-foreground">{order.total}</div>
+                    
+                    <div>
+                    <Badge variant={getStatusColor(order.status)} className="flex items-center gap-1 w-fit">
+                        {getStatusIcon(order.status)}
+                        {order.status}
+                    </Badge>
+                    </div>
+                    
+                    <div>
+                    <Badge variant={getPaymentColor(order.payment)}>
+                        {order.payment}
+                    </Badge>
+                    </div>
+                    
+                    <div className="text-sm text-muted-foreground">{order.date}</div>
+                    
+                    <div>
+                    <Button variant="ghost" size="sm">
+                        <Eye className="h-4 w-4" />
+                    </Button>
+                    </div>
+                </div>
+                ))}
+            </div>
+            </CardContent>
+        </Card>
+        </div>
     </AdminLayout>
-    </div>
 );
 };
 
