@@ -5,237 +5,240 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
 import { 
-  Save,
-  Building2,
-  Mail,
-  Phone,
-  Globe,
-  Bell,
-  Shield,
-  Palette,
-  Database
+Save,
+Building2,
+Mail,
+Phone,
+Globe,
+Bell,
+Shield,
+Palette,
+Database
 } from "lucide-react";
+import { AdminLayout } from "@/components/admin/adminLayout";
 
 const Settings = () => {
-  return (
+return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
+        <AdminLayout>
+    {/* Header */}
+    <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Settings</h1>
-          <p className="text-muted-foreground">Manage your store settings and preferences</p>
+        <h1 className="text-3xl font-bold text-foreground">Settings</h1>
+        <p className="text-muted-foreground">Manage your store settings and preferences</p>
         </div>
         <Button className="bg-primary hover:bg-primary/90">
-          <Save className="mr-2 h-4 w-4" />
-          Save Changes
+        <Save className="mr-2 h-4 w-4" />
+        Save Changes
         </Button>
-      </div>
+    </div>
 
-      <div className="grid gap-6 lg:grid-cols-3">
+    <div className="grid gap-6 lg:grid-cols-3">
         {/* Main Settings */}
         <div className="lg:col-span-2 space-y-6">
-          {/* Store Information */}
-          <Card className="shadow-elegant">
+        {/* Store Information */}
+        <Card className="shadow-elegant">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-foreground">
+            <CardTitle className="flex items-center gap-2 text-foreground">
                 <Building2 className="h-5 w-5" />
                 Store Information
-              </CardTitle>
+            </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="grid gap-4 md:grid-cols-2">
+            <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="storeName">Store Name</Label>
-                  <Input id="storeName" defaultValue="Office Care" />
+                <Label htmlFor="storeName">Store Name</Label>
+                <Input id="storeName" defaultValue="Office Care" />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="storeEmail">Store Email</Label>
-                  <Input id="storeEmail" type="email" defaultValue="admin@officecare.com" />
+                <Label htmlFor="storeEmail">Store Email</Label>
+                <Input id="storeEmail" type="email" defaultValue="admin@officecare.com" />
                 </div>
-              </div>
-              
-              <div className="grid gap-4 md:grid-cols-2">
+            </div>
+            
+            <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="storePhone">Phone Number</Label>
-                  <Input id="storePhone" defaultValue="+1 (555) 123-4567" />
+                <Label htmlFor="storePhone">Phone Number</Label>
+                <Input id="storePhone" defaultValue="+1 (555) 123-4567" />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="storeWebsite">Website URL</Label>
-                  <Input id="storeWebsite" defaultValue="https://officecare.com" />
+                <Label htmlFor="storeWebsite">Website URL</Label>
+                <Input id="storeWebsite" defaultValue="https://officecare.com" />
                 </div>
-              </div>
-              
-              <div className="space-y-2">
+            </div>
+            
+            <div className="space-y-2">
                 <Label htmlFor="storeAddress">Store Address</Label>
                 <Input id="storeAddress" defaultValue="123 Business Ave, New York, NY 10001" />
-              </div>
-              
-              <div className="space-y-2">
+            </div>
+            
+            <div className="space-y-2">
                 <Label htmlFor="storeDescription">Store Description</Label>
                 <Input id="storeDescription" defaultValue="Your one-stop shop for premium office appliances and furniture" />
-              </div>
+            </div>
             </CardContent>
-          </Card>
+        </Card>
 
-          {/* Notification Settings */}
-          <Card className="shadow-elegant">
+        {/* Notification Settings */}
+        <Card className="shadow-elegant">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-foreground">
+            <CardTitle className="flex items-center gap-2 text-foreground">
                 <Bell className="h-5 w-5" />
                 Notification Settings
-              </CardTitle>
+            </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <Label>Email Notifications</Label>
-                  <p className="text-sm text-muted-foreground">Receive email notifications for new orders</p>
+                <Label>Email Notifications</Label>
+                <p className="text-sm text-muted-foreground">Receive email notifications for new orders</p>
                 </div>
                 <Switch defaultChecked />
-              </div>
-              
-              <Separator />
-              
-              <div className="flex items-center justify-between">
+            </div>
+            
+            <Separator />
+            
+            <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <Label>Low Stock Alerts</Label>
-                  <p className="text-sm text-muted-foreground">Get notified when products are running low</p>
+                <Label>Low Stock Alerts</Label>
+                <p className="text-sm text-muted-foreground">Get notified when products are running low</p>
                 </div>
                 <Switch defaultChecked />
-              </div>
-              
-              <Separator />
-              
-              <div className="flex items-center justify-between">
+            </div>
+            
+            <Separator />
+            
+            <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <Label>Marketing Emails</Label>
-                  <p className="text-sm text-muted-foreground">Receive updates about new features and promotions</p>
+                <Label>Marketing Emails</Label>
+                <p className="text-sm text-muted-foreground">Receive updates about new features and promotions</p>
                 </div>
                 <Switch />
-              </div>
-              
-              <Separator />
-              
-              <div className="flex items-center justify-between">
+            </div>
+            
+            <Separator />
+            
+            <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
-                  <Label>Order Updates</Label>
-                  <p className="text-sm text-muted-foreground">Get notified about order status changes</p>
+                <Label>Order Updates</Label>
+                <p className="text-sm text-muted-foreground">Get notified about order status changes</p>
                 </div>
                 <Switch defaultChecked />
-              </div>
+            </div>
             </CardContent>
-          </Card>
+        </Card>
 
-          {/* Security Settings */}
-          <Card className="shadow-elegant">
+        {/* Security Settings */}
+        <Card className="shadow-elegant">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-foreground">
+            <CardTitle className="flex items-center gap-2 text-foreground">
                 <Shield className="h-5 w-5" />
                 Security Settings
-              </CardTitle>
+            </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="space-y-2">
+            <div className="space-y-2">
                 <Label htmlFor="currentPassword">Current Password</Label>
                 <Input id="currentPassword" type="password" placeholder="Enter current password" />
-              </div>
-              
-              <div className="grid gap-4 md:grid-cols-2">
+            </div>
+            
+            <div className="grid gap-4 md:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="newPassword">New Password</Label>
-                  <Input id="newPassword" type="password" placeholder="Enter new password" />
+                <Label htmlFor="newPassword">New Password</Label>
+                <Input id="newPassword" type="password" placeholder="Enter new password" />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="confirmPassword">Confirm Password</Label>
-                  <Input id="confirmPassword" type="password" placeholder="Confirm new password" />
+                <Label htmlFor="confirmPassword">Confirm Password</Label>
+                <Input id="confirmPassword" type="password" placeholder="Confirm new password" />
                 </div>
-              </div>
-              
-              <div className="flex items-center justify-between pt-4">
+            </div>
+            
+            <div className="flex items-center justify-between pt-4">
                 <div className="space-y-0.5">
-                  <Label>Two-Factor Authentication</Label>
-                  <p className="text-sm text-muted-foreground">Add an extra layer of security to your account</p>
+                <Label>Two-Factor Authentication</Label>
+                <p className="text-sm text-muted-foreground">Add an extra layer of security to your account</p>
                 </div>
                 <Switch />
-              </div>
+            </div>
             </CardContent>
-          </Card>
+        </Card>
         </div>
 
         {/* Sidebar Settings */}
         <div className="space-y-6">
-          {/* Quick Actions */}
-          <Card className="shadow-elegant">
+        {/* Quick Actions */}
+        <Card className="shadow-elegant">
             <CardHeader>
-              <CardTitle className="text-foreground">Quick Actions</CardTitle>
+            <CardTitle className="text-foreground">Quick Actions</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              <Button variant="outline" className="w-full justify-start">
+            <Button variant="outline" className="w-full justify-start">
                 <Database className="mr-2 h-4 w-4" />
                 Backup Data
-              </Button>
-              <Button variant="outline" className="w-full justify-start">
+            </Button>
+            <Button variant="outline" className="w-full justify-start">
                 <Globe className="mr-2 h-4 w-4" />
                 View Store
-              </Button>
-              <Button variant="outline" className="w-full justify-start">
+            </Button>
+            <Button variant="outline" className="w-full justify-start">
                 <Palette className="mr-2 h-4 w-4" />
                 Customize Theme
-              </Button>
-              <Button variant="outline" className="w-full justify-start">
+            </Button>
+            <Button variant="outline" className="w-full justify-start">
                 <Mail className="mr-2 h-4 w-4" />
                 Email Templates
-              </Button>
+            </Button>
             </CardContent>
-          </Card>
+        </Card>
 
-          {/* Store Stats */}
-          <Card className="shadow-elegant">
+        {/* Store Stats */}
+        <Card className="shadow-elegant">
             <CardHeader>
-              <CardTitle className="text-foreground">Store Statistics</CardTitle>
+            <CardTitle className="text-foreground">Store Statistics</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center">
                 <span className="text-sm text-muted-foreground">Total Products</span>
                 <span className="font-medium text-foreground">562</span>
-              </div>
-              <Separator />
-              <div className="flex justify-between items-center">
+            </div>
+            <Separator />
+            <div className="flex justify-between items-center">
                 <span className="text-sm text-muted-foreground">Total Orders</span>
                 <span className="font-medium text-foreground">1,248</span>
-              </div>
-              <Separator />
-              <div className="flex justify-between items-center">
+            </div>
+            <Separator />
+            <div className="flex justify-between items-center">
                 <span className="text-sm text-muted-foreground">Total Customers</span>
                 <span className="font-medium text-foreground">3,240</span>
-              </div>
-              <Separator />
-              <div className="flex justify-between items-center">
+            </div>
+            <Separator />
+            <div className="flex justify-between items-center">
                 <span className="text-sm text-muted-foreground">Monthly Revenue</span>
                 <span className="font-medium text-foreground">$45,250</span>
-              </div>
+            </div>
             </CardContent>
-          </Card>
+        </Card>
 
-          {/* Support */}
-          <Card className="shadow-elegant">
+        {/* Support */}
+        <Card className="shadow-elegant">
             <CardHeader>
-              <CardTitle className="text-foreground">Need Help?</CardTitle>
+            <CardTitle className="text-foreground">Need Help?</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3">
-              <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-muted-foreground">
                 Contact our support team if you need assistance with your store setup.
-              </p>
-              <Button variant="outline" className="w-full">
+            </p>
+            <Button variant="outline" className="w-full">
                 <Mail className="mr-2 h-4 w-4" />
                 Contact Support
-              </Button>
+            </Button>
             </CardContent>
-          </Card>
+        </Card>
         </div>
-      </div>
     </div>
-  );
+    </AdminLayout>
+    </div>
+);
 };
 
 export default Settings;
