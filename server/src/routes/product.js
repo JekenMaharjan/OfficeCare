@@ -4,7 +4,7 @@ import upload from "../middlewares/upload.js"; // your multer config file
 const productRouter = Router();
 
 // Add Product with image upload
-productRouter.post('/addProduct', upload.single('image'), async (req, res) => {
+productRouter.post('/Product', upload.single('image'), async (req, res) => {
     try {
         const existingProduct = await Product.findOne({ name: req.body.name });
         if (existingProduct) {
@@ -31,25 +31,29 @@ productRouter.post('/addProduct', upload.single('image'), async (req, res) => {
 });
 
 // Get all products
-productRouter.get('/addProduct', async (req, res) => {
-    const products = await Product.find();
-    res.send(products);
+productRouter.get('/Product', async (req, res) => {
+    try {
+        const products = await Product.find();
+        res.json(products);
+    } catch (err) {
+        res.status(500).json({ error: "Failed to fetch products" });
+    }
 });
 
 // Get product by ID
-productRouter.get('/addProduct/:id', async (req, res) => {
+productRouter.get('/Product/:id', async (req, res) => {
     const product = await Product.findById(req.params.id);
     res.send(product);
 });
 
 // Delete product
-productRouter.delete('/addProduct/:id', async (req, res) => {
+productRouter.delete('/Product/:id', async (req, res) => {
     await Product.findByIdAndDelete(req.params.id);
     res.send('Product Deleted Successfully!!');
 });
 
 // Update product
-productRouter.put('/addProduct/:id', async (req, res) => {
+productRouter.put('/Product/:id', async (req, res) => {
     await Product.findByIdAndUpdate(req.params.id, req.body);
     res.send('Product Updated Successfully!!');
 });

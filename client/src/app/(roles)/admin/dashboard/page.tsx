@@ -67,105 +67,107 @@ const lowStock = [
 
 return (
     <AdminLayout>
-        <div className="space-y-6">
-        {/* Header */}
-        <div className="flex items-center justify-between">
-            <div>
-            <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
-            <p className="text-muted-foreground">Welcome back! Here's what's happening at Office Care.</p>
+        <div
+        className="space-y-6 p-5 rounded-xl"
+        >
+            {/* Header */}
+            <div className="flex items-center justify-between">
+                <div>
+                <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
+                <p className="text-muted-foreground">Welcome back! Here's what's happening at Office Care.</p>
+                </div>
+                <Button className="bg-primary hover:bg-primary/90">
+                <Eye className="mr-2 h-4 w-4" />
+                View Store
+                </Button>
             </div>
-            <Button className="bg-primary hover:bg-primary/90">
-            <Eye className="mr-2 h-4 w-4" />
-            View Store
-            </Button>
-        </div>
 
-        {/* Stats Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {stats.map((stat, index) => (
-            <Card key={index} className="border shadow-elegant hover:shadow-glow transition-all duration-300">
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium text-muted-foreground">
-                    {stat.title}
-                </CardTitle>
-                <stat.icon className={`h-5 w-5 ${stat.color}`} />
+            {/* Stats Grid */}
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                {stats.map((stat, index) => (
+                <Card key={index} className="border shadow-elegant hover:shadow-glow transition-all duration-300">
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                    <CardTitle className="text-sm font-medium text-muted-foreground">
+                        {stat.title}
+                    </CardTitle>
+                    <stat.icon className={`h-5 w-5 ${stat.color}`} />
+                    </CardHeader>
+                    <CardContent>
+                    <div className="text-2xl font-bold text-foreground">{stat.value}</div>
+                    <div className="flex items-center text-xs text-muted-foreground">
+                        <TrendingUp className="mr-1 h-3 w-3 text-green-600" />
+                        {stat.change} from last month
+                    </div>
+                    </CardContent>
+                </Card>
+                ))}
+            </div>
+
+            {/* Main Content Grid */}
+            <div className="grid gap-6 lg:grid-cols-3">
+                {/* Recent Orders */}
+                <Card className="lg:col-span-2 shadow-elegant">
+                <CardHeader>
+                    <CardTitle className="text-foreground">Recent Orders</CardTitle>
+                    <CardDescription>Latest orders from your customers</CardDescription>
                 </CardHeader>
                 <CardContent>
-                <div className="text-2xl font-bold text-foreground">{stat.value}</div>
-                <div className="flex items-center text-xs text-muted-foreground">
-                    <TrendingUp className="mr-1 h-3 w-3 text-green-600" />
-                    {stat.change} from last month
-                </div>
-                </CardContent>
-            </Card>
-            ))}
-        </div>
-
-        {/* Main Content Grid */}
-        <div className="grid gap-6 lg:grid-cols-3">
-            {/* Recent Orders */}
-            <Card className="lg:col-span-2 shadow-elegant">
-            <CardHeader>
-                <CardTitle className="text-foreground">Recent Orders</CardTitle>
-                <CardDescription>Latest orders from your customers</CardDescription>
-            </CardHeader>
-            <CardContent>
-                <div className="space-y-4">
-                {recentOrders.map((order) => (
-                    <div key={order.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-accent/50 transition-colors">
-                    <div className="flex items-center space-x-4">
-                        <div>
-                        <p className="text-sm font-medium text-foreground">{order.id}</p>
-                        <p className="text-xs text-muted-foreground">{order.customer}</p>
+                    <div className="space-y-4">
+                    {recentOrders.map((order) => (
+                        <div key={order.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-accent/50 transition-colors">
+                        <div className="flex items-center space-x-4">
+                            <div>
+                            <p className="text-sm font-medium text-foreground">{order.id}</p>
+                            <p className="text-xs text-muted-foreground">{order.customer}</p>
+                            </div>
                         </div>
+                        <div className="text-right">
+                            <p className="text-sm font-medium text-foreground">{order.amount}</p>
+                            <Badge 
+                            variant={order.status === "completed" ? "default" : 
+                                    order.status === "pending" ? "secondary" : "outline"}
+                            className="mt-1"
+                            >
+                            {order.status === "completed" && <CheckCircle className="mr-1 h-3 w-3" />}
+                            {order.status === "pending" && <AlertCircle className="mr-1 h-3 w-3" />}
+                            {order.status}
+                            </Badge>
+                        </div>
+                        </div>
+                    ))}
                     </div>
-                    <div className="text-right">
-                        <p className="text-sm font-medium text-foreground">{order.amount}</p>
-                        <Badge 
-                        variant={order.status === "completed" ? "default" : 
-                                order.status === "pending" ? "secondary" : "outline"}
-                        className="mt-1"
-                        >
-                        {order.status === "completed" && <CheckCircle className="mr-1 h-3 w-3" />}
-                        {order.status === "pending" && <AlertCircle className="mr-1 h-3 w-3" />}
-                        {order.status}
-                        </Badge>
-                    </div>
-                    </div>
-                ))}
-                </div>
-            </CardContent>
-            </Card>
+                </CardContent>
+                </Card>
 
-            {/* Low Stock Alert */}
-            <Card className="shadow-elegant">
-            <CardHeader>
-                <CardTitle className="text-foreground flex items-center">
-                <AlertCircle className="mr-2 h-5 w-5 text-orange-500" />
-                Low Stock Alert
-                </CardTitle>
-                <CardDescription>Products that need restocking</CardDescription>
-            </CardHeader>
-            <CardContent>
-                <div className="space-y-4">
-                {lowStock.map((item, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 border rounded-lg">
-                    <div>
-                        <p className="text-sm font-medium text-foreground">{item.name}</p>
-                        <p className="text-xs text-muted-foreground">{item.category}</p>
+                {/* Low Stock Alert */}
+                <Card className="shadow-elegant">
+                <CardHeader>
+                    <CardTitle className="text-foreground flex items-center">
+                    <AlertCircle className="mr-2 h-5 w-5 text-orange-500" />
+                    Low Stock Alert
+                    </CardTitle>
+                    <CardDescription>Products that need restocking</CardDescription>
+                </CardHeader>
+                <CardContent>
+                    <div className="space-y-4">
+                    {lowStock.map((item, index) => (
+                        <div key={index} className="flex items-center justify-between p-3 border rounded-lg">
+                        <div>
+                            <p className="text-sm font-medium text-foreground">{item.name}</p>
+                            <p className="text-xs text-muted-foreground">{item.category}</p>
+                        </div>
+                        <Badge variant="destructive" className="text-xs">
+                            {item.stock} left
+                        </Badge>
+                        </div>
+                    ))}
                     </div>
-                    <Badge variant="destructive" className="text-xs">
-                        {item.stock} left
-                    </Badge>
-                    </div>
-                ))}
-                </div>
-                <Button variant="outline" className="w-full mt-4">
-                View All Products
-                </Button>
-            </CardContent>
-            </Card>
-        </div>
+                    <Button variant="outline" className="w-full mt-4">
+                    View All Products
+                    </Button>
+                </CardContent>
+                </Card>
+            </div>
         </div>
     </AdminLayout>
 );

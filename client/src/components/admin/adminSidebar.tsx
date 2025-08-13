@@ -61,48 +61,53 @@ return (
     className={`${collapsed ? "w-16" : "w-64"} border-r border-sidebar-border transition-all duration-300`}
     collapsible="icon"
     >
-    <SidebarHeader className="border-b border-sidebar-border p-4">
-        {!collapsed && (
-        <div className="flex items-center gap-2 text-sidebar-foreground">
-            <Building2 className="h-8 w-8" />
-            <div>
-                <h2 className="text-lg font-bold">Office Care</h2>
-                <p className="text-sm opacity-80">Admin Panel</p>
+        <SidebarHeader
+        className="border-b border-sidebar-border p-4"
+        style={{background: "#0400ffbe"}}
+        >
+            {!collapsed && (
+            <div className="flex items-center gap-2 text-sidebar-foreground">
+                <Building2 className="h-8 w-8 text-white" />
+                <div>
+                    <h2 className="text-lg font-bold text-white">Office Care</h2>
+                    <p className="text-sm opacity-80 text-white">Admin Panel</p>
+                </div>
             </div>
-        </div>
-        )}
-        {collapsed && (
-        <div className="flex justify-center">
-            <Building2 className="h-8 w-8 text-sidebar-foreground" />
-        </div>
-        )}
-    </SidebarHeader>
+            )}
+            {collapsed && (
+            <div className="flex justify-center">
+                <Building2 className="h-8 w-8 text-sidebar-foreground" />
+            </div>
+            )}
+        </SidebarHeader>
 
-    <SidebarContent>
-        <SidebarGroup>
-        <SidebarGroupLabel className="text-sidebar-foreground/70 uppercase text-xs font-semibold tracking-wider">
-            {!collapsed && "Navigation"}
-        </SidebarGroupLabel>
-        <SidebarGroupContent>
-            <SidebarMenu>
-            {navigationItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                <SidebarMenuButton asChild>
-                    <Link 
-                    href={item.url} 
-                    className={`${getNavClass(item.url)} flex items-center gap-3 rounded-lg px-3 py-2.5 transition-all duration-200`}
-                    title={collapsed ? item.title : undefined}
-                    >
-                    <item.icon className="h-5 w-5 shrink-0" />
-                    {!collapsed && <span className="font-medium">{item.title}</span>}
-                    </Link>
-                </SidebarMenuButton>
-                </SidebarMenuItem>
-            ))}
-            </SidebarMenu>
-        </SidebarGroupContent>
-        </SidebarGroup>
-    </SidebarContent>
+        <SidebarContent
+        style={{background: "#cccccc44"}}
+        >
+            <SidebarGroup>
+            <SidebarGroupLabel className="text-sidebar-foreground/70 uppercase text-xs font-semibold tracking-wider">
+                {!collapsed && "Navigation"}
+            </SidebarGroupLabel>
+            <SidebarGroupContent>
+                <SidebarMenu>
+                {navigationItems.map((item) => (
+                    <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton asChild>
+                        <Link 
+                        href={item.url} 
+                        className={`${getNavClass(item.url)} flex items-center gap-3 rounded-lg px-3 py-2.5 transition-all duration-200`}
+                        title={collapsed ? item.title : undefined}
+                        >
+                        <item.icon className="h-5 w-5 shrink-0" />
+                        {!collapsed && <span className="font-medium">{item.title}</span>}
+                        </Link>
+                    </SidebarMenuButton>
+                    </SidebarMenuItem>
+                ))}
+                </SidebarMenu>
+            </SidebarGroupContent>
+            </SidebarGroup>
+        </SidebarContent>
     </Sidebar>
 );
 }

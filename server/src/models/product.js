@@ -7,7 +7,7 @@ const productSchema = new Schema({
     price: Number,            // Price in numbers
     category: String,         // Category like "Electronics", "Clothing", etc.
     image: String,            // Will store the filename of uploaded image
-    stock: Number             // Number of items available
+    stock: Number,            // Number of items available
 });
 
 const Product = mongoose.model('Product', productSchema);
