@@ -34,7 +34,7 @@ const validationSchema = Yup.object({
 })
 
 const Signin = () => {
-    const [showPassword, setShowPassword] = useState(false)
+    // const [showPassword, setShowPassword] = useState(false)
 
     const initialValues: SigninFormValues = {
         email: "",
@@ -50,7 +50,7 @@ const Signin = () => {
 
             const { data } = await axios.post(process.env.NEXT_PUBLIC_API_URL + "/signin", values)
             if(data?.isLoggedIn){
-                router.push('/homepage')
+                router.push('admin/dashboard')
                 // router.back();
             }
             //   toast("Welcome back! You have successfully signed in.")
@@ -72,10 +72,10 @@ const Signin = () => {
     return (
         <div
         className="min-h-screen flex items-center justify-center p-4"
-        style={{ background: "linear-gradient(135deg, #fed7aa 0%, #dbeafe 100%)" }}
+        style={{ background: "linear-gradient(135deg, #0400ffbe 0%, #dbeafe 100%)" }}
         >
         <Card className="w-full max-w-md">
-                <img className="w-60 h-auto mx-auto my-auto" src="/OfficeCareLogo.png" alt="Office Care Logo" />
+                <img className="w-50 h-auto mx-auto my-auto" src="/OfficeCareLogo.png" alt="Office Care Logo" />
             <CardHeader className="text-center">
             <CardTitle className="text-2xl font-bold">Office Care</CardTitle>
             <p className="text-sm text-muted-foreground">Welcome back! Sign in to your account</p>
@@ -113,17 +113,18 @@ const Signin = () => {
                         as={Input}
                         id="password"
                         name="password"
-                        type={showPassword ? "text" : "password"}
+                        // type={showPassword ? "text" : "password"}
+                        type={"password"}
                         placeholder="Enter your password"
                         className={errors.password && touched.password ? "border-red-500" : ""}
                         />
-                        <button
+                        {/* <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
                         className="absolute right-3 top-1/2 -translate-y-1/2"
                         >
                         {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                        </button>
+                        </button> */}
                     </div>
                     <ErrorMessage name="password" component="p" className="text-sm text-red-500" />
                     </div>

@@ -46,8 +46,8 @@ const validationSchema = Yup.object({
 })
 
 const Register = () => {
-    const [showPassword, setShowPassword] = useState(false)
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+    // const [showPassword, setShowPassword] = useState(false)
+    // const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
   const initialValues: RegisterFormValues = {
         email: "",
@@ -80,10 +80,10 @@ const Register = () => {
   return (
     <div
       className="min-h-screen flex items-center justify-center p-4"
-      style={{ background: "linear-gradient(135deg, #fed7aa 0%, #dbeafe 100%)" }}
+      style={{ background: "linear-gradient(135deg, #0400ffbe 0%, #dbeafe 100%)" }}
     >
         <Card className="w-full max-w-md">
-              <img className="w-60 h-auto mx-auto my-auto" src="/OfficeCareLogo.png" alt="Office Care Logo" />
+              <img className="w-50 h-auto mx-auto my-auto" src="/OfficeCareLogo.png" alt="Office Care Logo" />
             <CardHeader className="text-center">
                 <CardTitle className="text-2xl font-bold">Office Care</CardTitle>
                 <p className="text-sm text-muted-foreground">Create your account</p>
@@ -151,10 +151,10 @@ const Register = () => {
                     <Field
                         as="select"
                         name="role"
-                        className="w-full border p-2 rounded-md"
+                        className="w-full border p-2 rounded-md text-sm"
                     >
-                        <option value="customer">Customer</option>
-                        <option value="admin">Admin</option>
+                        <option value="customer" className="text-sm">Customer</option>
+                        <option value="admin" className="text-sm">Admin</option>
                     </Field>
                     <ErrorMessage name="role" component="p" className="text-sm text-red-500" />
                     </div>
@@ -203,17 +203,18 @@ const Register = () => {
                         as={Input}
                         id="password"
                         name="password"
-                        type={showPassword ? "text" : "password"}
+                        // type={showPassword ? "text" : "password"}
+                        type={"password"}
                         placeholder="Enter your password"
                         className={errors.password && touched.password ? "border-red-500" : ""}
                         />
-                        <button
+                        {/* <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
                         className="absolute right-3 top-1/2 -translate-y-1/2"
                         >
                         {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                        </button>
+                        </button> */}
                     </div>
                     <ErrorMessage name="password" component="p" className="text-sm text-red-500" />
                     </div>
@@ -229,17 +230,18 @@ const Register = () => {
                         as={Input}
                         id="confirmPassword"
                         name="confirmPassword"
-                        type={showConfirmPassword ? "text" : "password"}
+                        // type={showConfirmPassword ? "text" : "password"}
+                        type={"password"}
                         placeholder="Confirm your password"
                         className={errors.confirmPassword && touched.confirmPassword ? "border-red-500" : ""}
                         />
-                        <button
+                        {/* <button
                         type="button"
                         onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                         className="absolute right-3 top-1/2 -translate-y-1/2"
                         >
                         {showConfirmPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                        </button>
+                        </button> */}
                     </div>
                     <ErrorMessage name="confirmPassword" component="p" className="text-sm text-red-500" />
                     </div>
