@@ -3,75 +3,79 @@
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from "yup"
 import { useState } from "react"
-
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-
 import { Mail, User, Phone, MapPin, Lock, EyeOff, Eye } from "lucide-react"
 import axios from "axios"
 import { toast } from "sonner"
+import { useRouter } from "next/navigation"
 
 interface RegisterFormValues {
-  email: string
-  firstName: string
-  lastName: string
-  phoneNumber: string
-  location: string
-  password: string
-  confirmPassword: string
+    email: string
+    firstName: string
+    lastName: string
+    role: string
+    phoneNumber: string
+    location: string
+    password: string
+    confirmPassword: string
 }
 
 const validationSchema = Yup.object({
-  email: Yup.string().email("Invalid email address").required("Email is required"),
-  firstName: Yup.string().min(2, "First name must be at least 2 characters").required("First name is required"),
-  lastName: Yup.string().min(2, "Last name must be at least 2 characters").required("Last name is required"),
-  phoneNumber: Yup.string()
-    .matches(/^[+]?[\d\s\-()]+$/, "Invalid phone number format")
-    .min(10, "Phone number must be at least 10 digits")
-    .required("Phone number is required"),
-  location: Yup.string().min(2, "Location must be at least 2 characters").required("Location is required"),
-  password: Yup.string()
-    .min(8, "Password must be at least 8 characters")
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
-      "Password must contain at least one uppercase letter, one lowercase letter, and one number",
-    )
-    .required("Password is required"),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password")], "Passwords must match")
-    .required("Confirm password is required"),
+    email: Yup.string().email("Invalid email address").required("Email is required"),
+    firstName: Yup.string().min(2, "First name must be at least 2 characters").required("First name is required"),
+    lastName: Yup.string().min(2, "Last name must be at least 2 characters").required("Last name is required"),
+    role: Yup.string().oneOf(["admin", "customer"]).required("Role is required"),
+    phoneNumber: Yup.string()
+        .matches(/^[+]?[\d\s\-()]+$/, "Invalid phone number format")
+        .min(10, "Phone number must be at least 10 digits")
+        .required("Phone number is required"),
+    location: Yup.string().min(2, "Location must be at least 2 characters").required("Location is required"),
+    password: Yup.string()
+        .min(8, "Password must be at least 8 characters")
+        .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
+        "Password must contain at least one uppercase letter, one lowercase letter, and one number",
+        )
+        .required("Password is required"),
+    confirmPassword: Yup.string()
+        .oneOf([Yup.ref("password")], "Passwords must match")
+        .required("Confirm password is required"),
 })
 
 const Register = () => {
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+    const [showPassword, setShowPassword] = useState(false)
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
   const initialValues: RegisterFormValues = {
-    email: "",
-    firstName: "",
-    lastName: "",
-    phoneNumber: "",
-    location: "",
-    password: "",
-    confirmPassword: "",
+        email: "",
+        firstName: "",
+        lastName: "",
+        role: "customer",
+        phoneNumber: "",
+        location: "",
+        password: "",
+        confirmPassword: "",
   }
 
-  const handleSubmit = async (values: RegisterFormValues, { setSubmitting }: any) => {
-    try {
-        await new Promise((resolve) => setTimeout(resolve, 1000))
+    const router = useRouter()
 
-        const { data } = await axios.post(process.env.NEXT_PUBLIC_API_URL + "/register", values)
-        toast(data)
-
-        console.log("Registration data:", values)
-        setSubmitting(false)
-    } catch (error) {
-        toast("Registration Failed Something went wrong. Please try again.")
-        setSubmitting(false)
+    const handleSubmit = async (values: RegisterFormValues, { setSubmitting }: any) => {
+        try {
+            await new Promise((resolve) => setTimeout(resolve, 1000))
+            debugger;
+            const { data } = await axios.post(process.env.NEXT_PUBLIC_API_URL + "/register", values)
+            toast(data)
+            setSubmitting(false)
+            router.push("/signin")  // Redirect to sign-in page
+        } catch (error) {
+            toast("Registration Failed Something went wrong. Please try again.")
+            setSubmitting(false)
+        }
     }
-  }
+
 
   return (
     <div
@@ -138,6 +142,23 @@ const Register = () => {
                         <ErrorMessage name="lastName" component="p" className="text-sm text-red-500" />
                     </div>
                     </div>
+
+                    {/* Role */}
+                    <div>
+                    <Label htmlFor="role" className="flex items-center gap-2">
+                        Role
+                    </Label>
+                    <Field
+                        as="select"
+                        name="role"
+                        className="w-full border p-2 rounded-md"
+                    >
+                        <option value="customer">Customer</option>
+                        <option value="admin">Admin</option>
+                    </Field>
+                    <ErrorMessage name="role" component="p" className="text-sm text-red-500" />
+                    </div>
+
 
                     {/* Phone */}
                     <div>
@@ -224,7 +245,7 @@ const Register = () => {
                     </div>
 
                     <Button type="submit" disabled={isSubmitting} className="w-full cursor-pointer">
-                    {isSubmitting ? "Creating Account..." : "Create Account"}
+                        {isSubmitting ? "Creating Account..." : "Create Account"}
                     </Button>
 
                     <div className="text-center">

@@ -6,18 +6,34 @@ import User from "../models/user.js"
 const userRouter = Router()
 
 userRouter.post('/register', async (req, res) => {
+    try {
+    const { email, role } = req.body;
+
     // Check if the email already exists
-    const user = await User.findOne({email: req.body.email})
-    if(user){
-        return res.send('User already exists!!')
-    } 
-    else{
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+        return res.status(400).send('User already exists!');
+    }
+    
+    // Ensure only one admin can be created
+    if (role === 'admin') {
+        const existingAdmin = await User.findOne({ role: 'admin' });
+        if (existingAdmin) {
+            return res.status(400).send('Admin already exists! Only one admin allowed.');
+        }
+    }
+    
         // Hash the password
         req.body.password = await bcrypt.hash(req.body.password, saltRounds)
+        req.body.confirmPassword = await bcrypt.hash(req.body.confirmPassword, saltRounds)
         // Create the user in the db
-        User.create(req.body)
+        await User.create(req.body)
         return res.send('User Registered Successfully!!')
-    }
+
+    } catch (error) {
+        console.error("Registration error:", error);
+        return res.status(500).send('Registration failed. Please try again later.');
+  }
 })
 
 userRouter.post('/signin', async (req, res) => {
