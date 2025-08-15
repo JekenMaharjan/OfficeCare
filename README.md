@@ -199,8 +199,3 @@ For any inquiries, reach out to us at:
 
 📬 Email: [maharjanjeken@gmail.com](mailto:maharjanjeken@gmail.com)
 
----
-
-> ⚡ *Fun Fact:* I go by the nickname **Jekode** — blending code with my name 😊
-
-> ⭐️ _Thanks for visiting my profile!_
