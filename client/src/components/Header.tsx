@@ -5,17 +5,6 @@ const Header = () => {
     return (
         <header className="bg-white shadow-md sticky top-0 z-50">
             <div className="container mx-auto px-4">
-                {/* Top bar */}
-                <div className="flex justify-between items-center py-2 text-sm border-b border-gray-200">
-                    <div className="text-gray-600">
-                        Free shipping on orders over $100 | Call: 1-800-OFFICE
-                    </div>
-                    <div className="flex items-center space-x-4">
-                        <span className="text-gray-600">Account</span>
-                        <span className="text-gray-600">Help</span>
-                    </div>
-                </div>
-
                 {/* Main header */}
                 <div className="flex items-center justify-between py-4">
                     <div className="flex items-center">
@@ -60,19 +49,6 @@ const Header = () => {
                         </button>
                     </div>
                 </div>
-
-                {/* Navigation */}
-                <nav className="pb-4">
-                    <ul className="flex space-x-8 text-gray-700">
-                        <li><a href="#" className="hover:text-purple-600 transition-colors font-medium">Home</a></li>
-                        <li><a href="#" className="hover:text-purple-600 transition-colors">Computers & Laptops</a></li>
-                        <li><a href="#" className="hover:text-purple-600 transition-colors">Printers & Scanners</a></li>
-                        <li><a href="#" className="hover:text-purple-600 transition-colors">Office Furniture</a></li>
-                        <li><a href="#" className="hover:text-purple-600 transition-colors">Electronics</a></li>
-                        <li><a href="#" className="hover:text-purple-600 transition-colors">Supplies</a></li>
-                        <li><a href="#" className="hover:text-purple-600 transition-colors">Special Deals</a></li>
-                    </ul>
-                </nav>
             </div>
         </header>
     );
