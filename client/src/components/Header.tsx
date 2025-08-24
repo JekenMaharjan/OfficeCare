@@ -4,14 +4,25 @@ import Link from 'next/link';
 
 const Header = () => {
     return (
-        <header className="shadow-md sticky bg-blue-100 top-0 z-50">
+        <header className="sticky h-25 flex items-center justify-center top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container mx-auto px-4">
                 {/* Main header */}
                 <div className="flex items-center justify-between py-4">
-                    <div className="flex items-center">
+                    {/* Logo */}
+                    <div className="flex items-center space-x-2">
+                        {/* Logo Image can still navigate home if needed */}
+                        <Link href="/">
+                            <img
+                            className="h-20 w-20"
+                            src="/OfficeCareLogo.png"
+                            alt="Office Care Logo"
+                            />
+                        </Link>
+
+                        {/* H1 scrolls to top, no navigation */}
                         <h1
                             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                            className="cursor-pointer text-4xl font-bold bg-blue-600 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300 will-change-transform"
+                            className="cursor-pointer text-3xl font-bold bg-blue-600 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300 will-change-transform"
                         >
                             Office Care
                         </h1>
