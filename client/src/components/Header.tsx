@@ -1,5 +1,6 @@
 import React from 'react';
 import { Search, ShoppingCart, User, Heart } from 'lucide-react';
+import Link from 'next/link';
 
 const Header = () => {
     return (
@@ -8,10 +9,14 @@ const Header = () => {
                 {/* Main header */}
                 <div className="flex items-center justify-between py-4">
                     <div className="flex items-center">
-                        <h1 className="text-3xl font-bold bg-gradient-to-r from-[#A32CDF] to-[#106AD2] bg-clip-text text-transparent">
+                        <h1
+                            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                            className="cursor-pointer text-3xl font-bold bg-blue-600 bg-clip-text text-transparent"
+                        >
                             Office Care
                         </h1>
                     </div>
+
 
                     {/* Search bar */}
                     <div className="flex-1 max-w-2xl mx-8">
@@ -21,20 +26,25 @@ const Header = () => {
                                 placeholder="Search for office appliances..."
                                 className="w-full px-4 py-3 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
                             />
-                            <button className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-[#A32CDF] to-[#106AD2] text-white p-2 rounded-md hover:opacity-90 transition-opacity cursor-pointer">
+                            <button className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white p-2 rounded-md hover:opacity-90 transition-opacity cursor-pointer">
                                 <Search size={20} />
                             </button>
                         </div>
                     </div>
 
                     {/* Right icons */}
-                    <div className="flex items-center space-x-6">
-                        <button className='bg-gradient-to-r from-[#A32CDF] to-[#106AD2] text-white p-2 rounded-xl'>
-                            <a href="/register">SignUp</a>
+                    <div className="flex items-center space-x-4">
+                        <button className='bg-green-500 text-white py-1 px-2 rounded-xl'>
+                            <Link href="/register">
+                                Sign Up
+                            </Link>
                         </button>
-                        <button className='bg-gradient-to-r from-[#A32CDF] to-[#106AD2] text-white p-2 rounded-xl'>
-                            <a href="/signin">SignIn</a>
+                        <button className='bg-blue-500 text-white py-1 px-2 rounded-xl'>
+                            <Link href="/signin">
+                                Sign In
+                            </Link>
                         </button>
+
                         <button className="cursor-pointer relative hover:text-purple-600 transition-colors">
                             <Heart size={24} />
                         </button>
@@ -43,9 +53,9 @@ const Header = () => {
                         </button>
                         <button className="cursor-pointer relative hover:text-purple-600 transition-colors">
                             <ShoppingCart size={24} />
-                            <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                            {/* <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                                 3
-                            </span>
+                            </span> */}
                         </button>
                     </div>
                 </div>
