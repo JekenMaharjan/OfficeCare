@@ -149,7 +149,7 @@ export default function ProductList() {
                 <div className="flex-1">
                     <div className="flex items-start justify-between mb-2">
                     <CardTitle className="text-lg">{product.name}</CardTitle>
-                    <Badge variant={product.inStock ? "default" : "secondary"}>
+                    <Badge className={product.inStock ? "bg-purple-600" : "text-black bg-gray-200/80"}>
                         {product.inStock ? "In Stock" : "Out of Stock"}
                     </Badge>
                     </div>
@@ -157,7 +157,7 @@ export default function ProductList() {
                     {product.description}
                     </CardDescription>
                     <div className="flex items-center justify-between mb-3">
-                    <span className="text-2xl font-bold text-primary">
+                    <span className="text-2xl font-bold text-purple-600">
                         ${product.price}
                     </span>
                     <div className="flex items-center">
@@ -168,7 +168,7 @@ export default function ProductList() {
                     </div>
                 </div>
                 <Button 
-                    className="w-full" 
+                    className="w-full bg-purple-600 hover:bg-purple-600/80 cursor-pointer" 
                     onClick={() => handleAddToCart(product.id)}
                     disabled={!product.inStock}
                 >
