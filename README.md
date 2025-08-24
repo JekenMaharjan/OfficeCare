@@ -45,21 +45,21 @@ Development is structured into distinct phases for better planning and tracking.
 🎯 Goal: Build the minimum required features for a fully working e-commerce platform. Users should be able to register, log in, browse products, add items to a cart, and place an order.
 
 #### ⏳ Frontend (Client Side)
-    - ✅ User Registration Page (sign-up)
-    - ✅ User Login Page (sign-in)
-    - ✅ Logout Functionality
-    - ✅ Product Listing Page (browse all products)
-    - ✅ Product Detail Page (view product info: image, price, description)
-    - ✅ Shopping Cart Page (add/remove items, view total)
-    - ✅ Place Order Page (checkout & confirm order)
+- ✅ User Registration Page (sign-up)
+- ✅ User Login Page (sign-in)
+- ✅ Logout Functionality
+- ✅ Product Listing Page (browse all products)
+- ✅ Product Detail Page (view product info: image, price, description)
+- ✅ Shopping Cart Page (add/remove items, view total)
+- ✅ Place Order Page (checkout & confirm order)
 
 #### ⏳ Backend (Server Side)
-    - ✅ User Registration API (with email check & bcrypt password hashing)
-    - ✅ User Login API (JWT authentication)
-    - ✅ Product Management API (admin can add products)
-    - ✅ Get Products API (fetch all products)
-    - ✅ Cart API (add, remove, update cart items)
-    - ✅ Order Placement API (store orders in DB with status like Pending)
+- ✅ User Registration API (with email check & bcrypt password hashing)
+- ✅ User Login API (JWT authentication)
+- ✅ Product Management API (admin can add products)
+- ✅ Get Products API (fetch all products)
+- ✅ Cart API (add, remove, update cart items)
+- ✅ Order Placement API (store orders in DB with status like Pending)
 
 ### 🟡 **Phase 2: Advanced User & Business Features** ⏳ _(In Progress)_
 
