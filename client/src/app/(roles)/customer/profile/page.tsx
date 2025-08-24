@@ -10,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { User, Package, MapPin, CreditCard } from "lucide-react"
 import { toast } from "sonner"
+import { CustomerLayout } from "@/components/customer/customerLayout"
 
 // TODO: Replace with actual user data from backend/auth context
 const mockUser = {
@@ -83,198 +84,188 @@ export default function Profile() {
     setAddresses(addresses.filter(addr => addr.id !== addressId))
   }
 
-  const getStatusVariant = (status: string) => {
-    switch (status.toLowerCase()) {
-      case "delivered":
-        return "default"
-      case "shipped":
-        return "secondary"
-      case "processing":
-        return "outline"
-      default:
-        return "secondary"
-    }
-  }
+    return (
+        <CustomerLayout>
+            <div className="max-w-4xl mx-auto space-y-6">
+            <div>
+                <h1 className="text-3xl font-bold text-foreground">My Profile</h1>
+                <p className="text-muted-foreground">Manage your account and preferences</p>
+            </div>
 
-  return (
-    <div className="max-w-4xl mx-auto space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold text-foreground">My Profile</h1>
-        <p className="text-muted-foreground">Manage your account and preferences</p>
-      </div>
+            <Tabs defaultValue="profile" className="space-y-6">
+                <TabsList className="grid w-full grid-cols-4">
+                    <TabsTrigger value="profile" className="cursor-pointer">
+                        <User className="h-4 w-4 mr-2" />
+                        Profile
+                    </TabsTrigger>
+                    <TabsTrigger value="orders" className="cursor-pointer">
+                        <Package className="h-4 w-4 mr-2" />
+                        Orders
+                    </TabsTrigger>
+                    <TabsTrigger value="addresses" className="cursor-pointer">
+                        <MapPin className="h-4 w-4 mr-2" />
+                        Addresses
+                    </TabsTrigger>
+                    <TabsTrigger value="payment" className="cursor-pointer">
+                        <CreditCard className="h-4 w-4 mr-2" />
+                        Payment
+                    </TabsTrigger>
+                </TabsList>
 
-      <Tabs defaultValue="profile" className="space-y-6">
-        <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="profile">
-            <User className="h-4 w-4 mr-2" />
-            Profile
-          </TabsTrigger>
-          <TabsTrigger value="orders">
-            <Package className="h-4 w-4 mr-2" />
-            Orders
-          </TabsTrigger>
-          <TabsTrigger value="addresses">
-            <MapPin className="h-4 w-4 mr-2" />
-            Addresses
-          </TabsTrigger>
-          <TabsTrigger value="payment">
-            <CreditCard className="h-4 w-4 mr-2" />
-            Payment
-          </TabsTrigger>
-        </TabsList>
+                <TabsContent value="profile">
+                    <Card>
+                        <CardHeader>
+                        <CardTitle className="text-2xl">Personal Information</CardTitle>
+                        <CardDescription>
+                            Update your personal details and contact information
+                        </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                        <form onSubmit={handleUpdateProfile} className="space-y-4">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="space-y-2">
+                                <Label htmlFor="name">Full Name</Label>
+                                <Input
+                                id="name"
+                                value={user.name}
+                                onChange={(e) => setUser({ ...user, name: e.target.value })}
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="email">Email</Label>
+                                <Input
+                                id="email"
+                                type="email"
+                                value={user.email}
+                                onChange={(e) => setUser({ ...user, email: e.target.value })}
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <Label htmlFor="phone">Phone</Label>
+                                <Input
+                                id="phone"
+                                value={user.phone}
+                                onChange={(e) => setUser({ ...user, phone: e.target.value })}
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <Label>Member Since</Label>
+                                <Input
+                                value={new Date(user.joinDate).toLocaleDateString()}
+                                disabled
+                                />
+                            </div>
+                            </div>
+                            <Button type="submit" className="bg-purple-600">Update Profile</Button>
+                        </form>
+                        </CardContent>
+                    </Card>
+                </TabsContent>
 
-        <TabsContent value="profile">
-          <Card>
-            <CardHeader>
-              <CardTitle>Personal Information</CardTitle>
-              <CardDescription>
-                Update your personal details and contact information
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleUpdateProfile} className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Full Name</Label>
-                    <Input
-                      id="name"
-                      value={user.name}
-                      onChange={(e) => setUser({ ...user, name: e.target.value })}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={user.email}
-                      onChange={(e) => setUser({ ...user, email: e.target.value })}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Phone</Label>
-                    <Input
-                      id="phone"
-                      value={user.phone}
-                      onChange={(e) => setUser({ ...user, phone: e.target.value })}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label>Member Since</Label>
-                    <Input
-                      value={new Date(user.joinDate).toLocaleDateString()}
-                      disabled
-                    />
-                  </div>
-                </div>
-                <Button type="submit">Update Profile</Button>
-              </form>
-            </CardContent>
-          </Card>
-        </TabsContent>
+                <TabsContent value="orders">
+                    <Card>
+                        <CardHeader>
+                        <CardTitle className="text-2xl">Order History</CardTitle>
+                        <CardDescription>
+                            View your past orders and track current ones
+                        </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                        <div className="space-y-4">
+                            {orders.map((order) => (
+                            <div key={order.id} className="flex items-center justify-between p-4 border rounded-lg">
+                                <div>
+                                <p className="font-medium">Order #{order.id}</p>
+                                <p className="text-sm text-muted-foreground">
+                                    {new Date(order.date).toLocaleDateString()} • {order.items} items
+                                </p>
+                                </div>
+                                <div className="text-right space-y-1">
+                                <p className="font-medium">${order.total.toFixed(2)}</p>
+                                <Badge className={order.status === "Delivered" ? "bg-purple-600" : "text-black bg-gray-200/80"}>
+                                    {order.status}
+                                </Badge>
+                                </div>
+                            </div>
+                            ))}
+                            {orders.length === 0 && (
+                            <p className="text-center text-muted-foreground py-8">
+                                No orders found. Start shopping to see your orders here.
+                            </p>
+                            )}
+                        </div>
+                        </CardContent>
+                    </Card>
+                </TabsContent>
 
-        <TabsContent value="orders">
-          <Card>
-            <CardHeader>
-              <CardTitle>Order History</CardTitle>
-              <CardDescription>
-                View your past orders and track current ones
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {orders.map((order) => (
-                  <div key={order.id} className="flex items-center justify-between p-4 border rounded-lg">
-                    <div>
-                      <p className="font-medium">Order #{order.id}</p>
-                      <p className="text-sm text-muted-foreground">
-                        {new Date(order.date).toLocaleDateString()} • {order.items} items
-                      </p>
-                    </div>
-                    <div className="text-right space-y-1">
-                      <p className="font-medium">${order.total.toFixed(2)}</p>
-                      <Badge variant={getStatusVariant(order.status)}>
-                        {order.status}
-                      </Badge>
-                    </div>
-                  </div>
-                ))}
-                {orders.length === 0 && (
-                  <p className="text-center text-muted-foreground py-8">
-                    No orders found. Start shopping to see your orders here.
-                  </p>
-                )}
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
+                <TabsContent value="addresses">
+                    <Card>
+                        <CardHeader>
+                        <CardTitle className="text-2xl">Saved Addresses</CardTitle>
+                        <CardDescription>
+                            Manage your shipping and billing addresses
+                        </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                        <div className="space-y-4">
+                            {addresses.map((address) => (
+                            <div key={address.id} className="flex items-start justify-between p-4 border rounded-lg">
+                                <div className="flex-1">
+                                <div className="flex items-center gap-2 mb-2">
+                                    <p className="font-medium">{address.type}</p>
+                                    {address.isDefault && (
+                                    <Badge variant="secondary" className="text-xs">Default</Badge>
+                                    )}
+                                </div>
+                                <p className="text-sm text-muted-foreground">
+                                    {address.address}<br />
+                                    {address.city}, {address.state} {address.zipCode}
+                                </p>
+                                </div>
+                                <div className="flex space-x-2">
+                                <Button variant="outline" size="sm" className="cursor-pointer">Edit</Button>
+                                <Button 
+                                    variant="outline" 
+                                    size="sm"
+                                    className="cursor-pointer"
+                                    onClick={() => handleDeleteAddress(address.id)}
+                                    disabled={address.isDefault}
+                                >
+                                    Delete
+                                </Button>
+                                </div>
+                            </div>
+                            ))}
+                            <Button onClick={handleAddAddress} className="w-full bg-purple-600 cursor-pointer">
+                            Add New Address
+                            </Button>
+                        </div>
+                        </CardContent>
+                    </Card>
+                </TabsContent>
 
-        <TabsContent value="addresses">
-          <Card>
-            <CardHeader>
-              <CardTitle>Saved Addresses</CardTitle>
-              <CardDescription>
-                Manage your shipping and billing addresses
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {addresses.map((address) => (
-                  <div key={address.id} className="flex items-start justify-between p-4 border rounded-lg">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
-                        <p className="font-medium">{address.type}</p>
-                        {address.isDefault && (
-                          <Badge variant="secondary" className="text-xs">Default</Badge>
-                        )}
-                      </div>
-                      <p className="text-sm text-muted-foreground">
-                        {address.address}<br />
-                        {address.city}, {address.state} {address.zipCode}
-                      </p>
-                    </div>
-                    <div className="flex space-x-2">
-                      <Button variant="outline" size="sm">Edit</Button>
-                      <Button 
-                        variant="outline" 
-                        size="sm"
-                        onClick={() => handleDeleteAddress(address.id)}
-                        disabled={address.isDefault}
-                      >
-                        Delete
-                      </Button>
-                    </div>
-                  </div>
-                ))}
-                <Button onClick={handleAddAddress} className="w-full">
-                  Add New Address
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-
-        <TabsContent value="payment">
-          <Card>
-            <CardHeader>
-              <CardTitle>Payment Methods</CardTitle>
-              <CardDescription>
-                Manage your saved payment methods
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="text-center py-8">
-                <CreditCard className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
-                <h3 className="text-lg font-semibold mb-2">No payment methods saved</h3>
-                <p className="text-muted-foreground mb-6">
-                  Add a payment method to make checkout faster and easier.
-                </p>
-                <Button>Add Payment Method</Button>
-              </div>
-            </CardContent>
-          </Card>
-        </TabsContent>
-      </Tabs>
-    </div>
-  )
+                <TabsContent value="payment">
+                    <Card>
+                        <CardHeader>
+                        <CardTitle className="text-2xl">Payment Methods</CardTitle>
+                        <CardDescription>
+                            Manage your saved payment methods
+                        </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                        <div className="text-center py-8">
+                            <CreditCard className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
+                            <h3 className="text-lg font-semibold mb-2">No payment methods saved</h3>
+                            <p className="text-muted-foreground mb-6">
+                            Add a payment method to make checkout faster and easier.
+                            </p>
+                            <Button className="cursor-pointer bg-purple-600">Add Payment Method</Button>
+                        </div>
+                        </CardContent>
+                    </Card>
+                </TabsContent>
+            </Tabs>
+            </div>
+        </CustomerLayout>
+    )
 }
