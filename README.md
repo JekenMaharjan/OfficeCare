@@ -48,7 +48,7 @@ Development is structured into distinct phases for better planning and tracking.
 - ✅ Implemented User Login page.
 - ✅ Implemented User Register page.
 - ✅ Basic Logout functionality.
-- ⏳ Add Product UI (Admin Panel)
+- ✅ Add Product UI (Admin Panel)
 - ⏳ Product Listing & Search Page
 - ⏳ Wishlist Functionality
 - ⏳ Shopping Cart
@@ -64,7 +64,7 @@ Development is structured into distinct phases for better planning and tracking.
     - Compares provided password with hashed password with bcrypt.
     - Generates a JWT upon successful login.
 - ✅ Get All Users Endpoint: (For internal use/testing) Retrieves a list of all registered users.
-- ⏳ Add Product API (Admin)
+- ✅ Add Product API (Admin)
 - ⏳ Get/Search Products API
 - ⏳ Wishlist Handling
 - ⏳ Cart Management APIs
