@@ -4,14 +4,14 @@ import Link from 'next/link';
 
 const Header = () => {
     return (
-        <header className="bg-white shadow-md sticky top-0 z-50">
+        <header className="shadow-md sticky bg-blue-100 top-0 z-50">
             <div className="container mx-auto px-4">
                 {/* Main header */}
                 <div className="flex items-center justify-between py-4">
                     <div className="flex items-center">
                         <h1
                             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                            className="cursor-pointer text-3xl font-bold bg-blue-600 bg-clip-text text-transparent"
+                            className="cursor-pointer text-4xl font-bold bg-blue-600 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300 will-change-transform"
                         >
                             Office Care
                         </h1>
@@ -34,12 +34,12 @@ const Header = () => {
 
                     {/* Right icons */}
                     <div className="flex items-center space-x-4">
-                        <button className='bg-green-500 text-white py-1 px-2 rounded-xl'>
+                        <button className='bg-green-500 text-white py-1 px-2 rounded-md hover:scale-105 transition-transform duration-300 will-change-transform'>
                             <Link href="/register">
                                 Sign Up
                             </Link>
                         </button>
-                        <button className='bg-blue-500 text-white py-1 px-2 rounded-xl'>
+                        <button className='bg-blue-500 text-white py-1 px-2 rounded-md hover:scale-105 transition-transform duration-300 will-change-transform'>
                             <Link href="/signin">
                                 Sign In
                             </Link>
