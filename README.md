@@ -42,33 +42,24 @@ Development is structured into distinct phases for better planning and tracking.
 
 ### 🟢 **Phase 1: Core Shopping Features** ⏳ _(In Progress)_
 
-🎯 Goal: Establish the foundation of the e-commerce platform by implementing essential user authentication, product management, and ordering capabilities. This phase focuses on building a seamless user flow — from login and registration to product browsing, cart handling, and placing an order.
+🎯 Goal: Build the minimum required features for a fully working e-commerce platform. Users should be able to register, log in, browse products, add items to a cart, and place an order.
 
 #### ⏳ Frontend (Client Side)
-- ✅ Implemented User Login page.
-- ✅ Implemented User Register page.
-- ✅ Basic Logout functionality.
-- ✅ Add Product UI (Admin Panel)
-- ⏳ Product Listing & Search Page
-- ⏳ Wishlist Functionality
-- ⏳ Shopping Cart
-- ⏳ Confirm Order Page
+    - ✅ User Registration Page (sign-up)
+    - ✅ User Login Page (sign-in)
+    - ✅ Logout Functionality
+    - ✅ Product Listing Page (browse all products)
+    - ✅ Product Detail Page (view product info: image, price, description)
+    - ✅ Shopping Cart Page (add/remove items, view total)
+    - ✅ Place Order Page (checkout & confirm order)
 
 #### ⏳ Backend (Server Side)
-- ✅ User Registration Endpoint: Allows new users to sign up.
-    - Checks for existing emails.
-    - Hashes passwords securely using bcrypt.
-    - Creates new user entries in the database.
-- ✅ User Login Endpoint: Authenticates users.
-    - Verifies email existence.
-    - Compares provided password with hashed password with bcrypt.
-    - Generates a JWT upon successful login.
-- ✅ Get All Users Endpoint: (For internal use/testing) Retrieves a list of all registered users.
-- ✅ Add Product API (Admin)
-- ⏳ Get/Search Products API
-- ⏳ Wishlist Handling
-- ⏳ Cart Management APIs
-- ⏳ Order Placement Endpoint
+    - ✅ User Registration API (with email check & bcrypt password hashing)
+    - ✅ User Login API (JWT authentication)
+    - ✅ Product Management API (admin can add products)
+    - ✅ Get Products API (fetch all products)
+    - ✅ Cart API (add, remove, update cart items)
+    - ✅ Order Placement API (store orders in DB with status like Pending)
 
 ### 🟡 **Phase 2: Advanced User & Business Features** ⏳ _(In Progress)_
 
