@@ -1,3 +1,5 @@
+"use client"
+
 import { CustomerHeader } from "./customerHeader"
 import Footer from "../Footer"
 

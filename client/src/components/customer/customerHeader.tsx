@@ -1,5 +1,6 @@
+"use client"
+
 import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
@@ -21,11 +22,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 export function CustomerHeader() {
   const [searchTerm, setSearchTerm] = useState("")
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const navigate = useNavigate()
+  const router = useRouter()
 
   // TODO: Replace with actual cart count from context/backend
   const cartItemCount = 2
@@ -37,21 +40,21 @@ export function CustomerHeader() {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
     if (searchTerm.trim()) {
-      navigate(`/products?search=${encodeURIComponent(searchTerm)}`)
+      router.push(`/products?search=${encodeURIComponent(searchTerm)}`)
     }
   }
 
   const handleLogout = () => {
     console.log("Logging out...")
     // TODO: Implement logout with backend
-    navigate("/")
+    router.push("/")
   }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-2">
+        <Link href="/" className="flex items-center space-x-2">
           <div className="w-8 h-8 bg-gradient-to-r from-[#A32CDF] to-[#106AD2] rounded-md"></div>
           <span className="font-bold text-xl">Office Care</span>
         </Link>
@@ -59,25 +62,25 @@ export function CustomerHeader() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-6">
           <Link 
-            to="/products" 
+            href="/products" 
             className="text-sm font-medium hover:text-primary transition-colors"
           >
             Products
           </Link>
           <Link 
-            to="/categories" 
+            href="/categories" 
             className="text-sm font-medium hover:text-primary transition-colors"
           >
             Categories
           </Link>
           <Link 
-            to="/deals" 
+            href="/deals" 
             className="text-sm font-medium hover:text-primary transition-colors"
           >
             Deals
           </Link>
           <Link 
-            to="/about" 
+            href="/about" 
             className="text-sm font-medium hover:text-primary transition-colors"
           >
             About
@@ -107,7 +110,7 @@ export function CustomerHeader() {
 
           {/* Cart */}
           <Button variant="ghost" size="sm" asChild className="relative">
-            <Link to="/cart">
+            <Link href="/cart">
               <ShoppingCart className="h-4 w-4" />
               {cartItemCount > 0 && (
                 <Badge className="absolute -top-2 -right-2 h-5 w-5 p-0 flex items-center justify-center text-xs">
@@ -130,19 +133,19 @@ export function CustomerHeader() {
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild>
-                  <Link to="/profile">
+                  <Link href="/profile">
                     <User className="mr-2 h-4 w-4" />
                     Profile
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/orders">
+                  <Link href="/orders">
                     <Package className="mr-2 h-4 w-4" />
                     My Orders
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/wishlist">
+                  <Link href="/wishlist">
                     <Heart className="mr-2 h-4 w-4" />
                     Wishlist
                   </Link>
@@ -157,10 +160,10 @@ export function CustomerHeader() {
           ) : (
             <div className="hidden sm:flex space-x-2">
               <Button variant="ghost" size="sm" asChild>
-                <Link to="/login">Login</Link>
+                <Link href="/login">Login</Link>
               </Button>
               <Button size="sm" asChild>
-                <Link to="/register">Sign Up</Link>
+                <Link href="/register">Sign Up</Link>
               </Button>
             </div>
           )}
@@ -182,28 +185,28 @@ export function CustomerHeader() {
         <div className="md:hidden border-t bg-background">
           <nav className="container py-4 space-y-4">
             <Link 
-              to="/products" 
+              href="/products" 
               className="block text-sm font-medium hover:text-primary transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Products
             </Link>
             <Link 
-              to="/categories" 
+              href="/categories" 
               className="block text-sm font-medium hover:text-primary transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Categories
             </Link>
             <Link 
-              to="/deals" 
+              href="/deals" 
               className="block text-sm font-medium hover:text-primary transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Deals
             </Link>
             <Link 
-              to="/about" 
+              href="/about" 
               className="block text-sm font-medium hover:text-primary transition-colors"
               onClick={() => setIsMobileMenuOpen(false)}
             >
@@ -227,10 +230,10 @@ export function CustomerHeader() {
             {!isLoggedIn && (
               <div className="flex space-x-2 pt-4 border-t">
                 <Button variant="ghost" size="sm" asChild className="flex-1">
-                  <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>Login</Link>
+                  <Link href="/login" onClick={() => setIsMobileMenuOpen(false)}>Login</Link>
                 </Button>
                 <Button size="sm" asChild className="flex-1">
-                  <Link to="/register" onClick={() => setIsMobileMenuOpen(false)}>Sign Up</Link>
+                  <Link href="/register" onClick={() => setIsMobileMenuOpen(false)}>Sign Up</Link>
                 </Button>
               </div>
             )}

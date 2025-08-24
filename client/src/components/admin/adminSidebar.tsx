@@ -1,3 +1,5 @@
+"use client"
+
 import { NavLink } from "react-router-dom"
 import { LayoutDashboard, Package, Users, ShoppingCart, LogOut } from "lucide-react"
 import {
