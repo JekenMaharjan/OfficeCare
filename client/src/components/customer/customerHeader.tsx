@@ -77,25 +77,25 @@ export function CustomerHeader() {
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-6">
             <Link 
-                href="/products" 
+                href="/customer/productList" 
                 className="text-sm font-medium hover:text-primary transition-colors"
             >
                 Products
             </Link>
             <Link 
-                href="/categories" 
+                href="#" 
                 className="text-sm font-medium hover:text-primary transition-colors"
             >
                 Categories
             </Link>
             <Link 
-                href="/deals" 
+                href="#" 
                 className="text-sm font-medium hover:text-primary transition-colors"
             >
                 Deals
             </Link>
             <Link 
-                href="/about" 
+                href="#" 
                 className="text-sm font-medium hover:text-primary transition-colors"
             >
                 About
