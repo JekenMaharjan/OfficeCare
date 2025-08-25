@@ -215,7 +215,15 @@ export default function OrdersPage() {
                         <TableCell>{order.items} items</TableCell>
                         <TableCell>${order.total.toFixed(2)}</TableCell>
                         <TableCell>
-                            <Badge variant={getStatusVariant(order.status)}>
+                            <Badge className={`${
+                                order.status === "Completed"
+                                ? "bg-purple-600 hover:bg-purple-600/80"
+                                : order.status === "Processing"
+                                ? "bg-gray-200 text-black hover:bg-gray-300/80"
+                                : order.status === "Shipped"
+                                ? "bg-white text-black border-1 border-gray-200 hover:bg-gray-100/70"
+                                : "bg-red-500 hover:bg-red-500/80"
+                            }`}>
                             {order.status}
                             </Badge>
                         </TableCell>
@@ -232,14 +240,14 @@ export default function OrdersPage() {
                                 value={order.status}
                                 onValueChange={(value) => handleUpdateOrderStatus(order.id, value)}
                             >
-                                <SelectTrigger className="w-32">
-                                <SelectValue />
+                                <SelectTrigger className="w-32 cursor-pointer">
+                                    <SelectValue />
                                 </SelectTrigger>
                                 <SelectContent>
-                                <SelectItem value="Pending">Pending</SelectItem>
-                                <SelectItem value="Processing">Processing</SelectItem>
-                                <SelectItem value="Shipped">Shipped</SelectItem>
-                                <SelectItem value="Completed">Completed</SelectItem>
+                                    <SelectItem value="Pending">Pending</SelectItem>
+                                    <SelectItem value="Processing">Processing</SelectItem>
+                                    <SelectItem value="Shipped">Shipped</SelectItem>
+                                    <SelectItem value="Completed">Completed</SelectItem>
                                 </SelectContent>
                             </Select>
                             </div>
