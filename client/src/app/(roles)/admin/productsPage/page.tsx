@@ -172,7 +172,7 @@ export default function ProductsPage() {
                         <TableCell>
                             <Badge className={`bg-purple-600 hover:bg-purple-600/80 ${
                                 product.status === "Inactive"
-                                ? "bg-red-600 hover:bg-red-600/80"
+                                ? "bg-gray-300 hover:bg-gray-300/80 text-black"
                                 : "bg-purple-600 hover:bg-purple-600/80"
                             }`}>
                             {product.status}

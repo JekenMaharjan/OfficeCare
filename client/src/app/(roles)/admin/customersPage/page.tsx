@@ -7,6 +7,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Badge } from "@/components/ui/badge"
 import { Search, Eye } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { AdminLayout } from "@/components/admin/adminLayout"
 
 // TODO: Replace with actual data from backend
 const mockCustomers = [
@@ -57,117 +58,124 @@ export default function CustomersPage() {
     customer.email.toLowerCase().includes(searchTerm.toLowerCase())
   )
 
-  return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold text-foreground">Customers</h1>
-        <p className="text-muted-foreground">Manage your customer base</p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Total Customers</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{customers.length}</div>
-            <p className="text-xs text-muted-foreground">
-              +10% from last month
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Active Customers</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
-              {customers.filter(c => c.status === "Active").length}
+    return (
+        <AdminLayout>
+            <div className="space-y-6">
+            <div>
+                <h1 className="text-3xl font-bold text-foreground">Customers</h1>
+                <p className="text-muted-foreground">Manage your customer base</p>
             </div>
-            <p className="text-xs text-muted-foreground">
-              {Math.round((customers.filter(c => c.status === "Active").length / customers.length) * 100)}% of total
-            </p>
-          </CardContent>
-        </Card>
 
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium">Average Spent</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
-              ${(customers.reduce((sum, c) => sum + c.totalSpent, 0) / customers.length).toFixed(2)}
-            </div>
-            <p className="text-xs text-muted-foreground">
-              Per customer lifetime value
-            </p>
-          </CardContent>
-        </Card>
-      </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <Card>
+                <CardHeader className="pb-2">
+                    <CardTitle className="text-sm font-medium">Total Customers</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <div className="text-2xl font-bold">{customers.length}</div>
+                    <p className="text-xs text-muted-foreground">
+                    +10% from last month
+                    </p>
+                </CardContent>
+                </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Customer List</CardTitle>
-          <CardDescription>
-            View and manage all registered customers
-          </CardDescription>
-          <div className="flex items-center space-x-2">
-            <Search className="h-4 w-4 text-muted-foreground" />
-            <Input
-              placeholder="Search customers..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="max-w-sm"
-            />
-          </div>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Customer</TableHead>
-                <TableHead>Contact</TableHead>
-                <TableHead>Orders</TableHead>
-                <TableHead>Total Spent</TableHead>
-                <TableHead>Join Date</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Actions</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {filteredCustomers.map((customer) => (
-                <TableRow key={customer.id}>
-                  <TableCell>
-                    <div>
-                      <div className="font-medium">{customer.name}</div>
-                      <div className="text-sm text-muted-foreground">{customer.email}</div>
+                <Card>
+                <CardHeader className="pb-2">
+                    <CardTitle className="text-sm font-medium">Active Customers</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <div className="text-2xl font-bold">
+                    {customers.filter(c => c.status === "Active").length}
                     </div>
-                  </TableCell>
-                  <TableCell>{customer.phone}</TableCell>
-                  <TableCell>{customer.totalOrders}</TableCell>
-                  <TableCell>${customer.totalSpent.toFixed(2)}</TableCell>
-                  <TableCell>{new Date(customer.joinDate).toLocaleDateString()}</TableCell>
-                  <TableCell>
-                    <Badge variant={customer.status === "Active" ? "default" : "secondary"}>
-                      {customer.status}
-                    </Badge>
-                  </TableCell>
-                  <TableCell>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => handleViewCustomer(customer.id)}
-                    >
-                      <Eye className="h-4 w-4" />
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
-    </div>
-  )
+                    <p className="text-xs text-muted-foreground">
+                    {Math.round((customers.filter(c => c.status === "Active").length / customers.length) * 100)}% of total
+                    </p>
+                </CardContent>
+                </Card>
+
+                <Card>
+                <CardHeader className="pb-2">
+                    <CardTitle className="text-sm font-medium">Average Spent</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <div className="text-2xl font-bold">
+                    ${(customers.reduce((sum, c) => sum + c.totalSpent, 0) / customers.length).toFixed(2)}
+                    </div>
+                    <p className="text-xs text-muted-foreground">
+                    Per customer lifetime value
+                    </p>
+                </CardContent>
+                </Card>
+            </div>
+
+            <Card>
+                <CardHeader>
+                <CardTitle className="text-2xl">Customer List</CardTitle>
+                <CardDescription>
+                    View and manage all registered customers
+                </CardDescription>
+                <div className="flex items-center space-x-2">
+                    <Search className="h-4 w-4 text-muted-foreground" />
+                    <Input
+                    placeholder="Search customers..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="max-w-sm"
+                    />
+                </div>
+                </CardHeader>
+                <CardContent>
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead className="text-gray-500">Customer</TableHead>
+                            <TableHead className="text-gray-500">Contact</TableHead>
+                            <TableHead className="text-gray-500">Orders</TableHead>
+                            <TableHead className="text-gray-500">Total Spent</TableHead>
+                            <TableHead className="text-gray-500">Join Date</TableHead>
+                            <TableHead className="text-gray-500">Status</TableHead>
+                            <TableHead className="text-gray-500">Actions</TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {filteredCustomers.map((customer) => (
+                            <TableRow key={customer.id}>
+                                <TableCell className="py-7">
+                                    <div>
+                                        <div className="font-medium">{customer.name}</div>
+                                        <div className="text-sm text-muted-foreground">{customer.email}</div>
+                                    </div>
+                                </TableCell>
+                                <TableCell>{customer.phone}</TableCell>
+                                <TableCell>{customer.totalOrders}</TableCell>
+                                <TableCell>${customer.totalSpent.toFixed(2)}</TableCell>
+                                <TableCell>{new Date(customer.joinDate).toLocaleDateString()}</TableCell>
+                                <TableCell>
+                                    <Badge className={`bg-purple-600 hover:bg-purple-600/80 ${
+                                        customer.status === "Inactive"
+                                        ? "bg-gray-300 hover:bg-gray-300/80 text-black"
+                                        : "bg-purple-600 hover:bg-purple-600/80"
+                                    }`}>
+                                    {customer.status}
+                                    </Badge>
+                                </TableCell>
+                                <TableCell>
+                                    <Button
+                                    variant="outline"
+                                    size="sm"
+                                    className="cursor-pointer"
+                                    onClick={() => handleViewCustomer(customer.id)}
+                                    >
+                                    <Eye className="h-4 w-4" />
+                                    </Button>
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+                </CardContent>
+            </Card>
+            </div>
+        </AdminLayout>
+    )
 }
