@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import * as Yup from "yup"
 import axios from "axios"
@@ -37,35 +37,43 @@ interface SigninFormValues {
 }
 
 export default function Login() {
-  const [showPassword, setShowPassword] = useState(false)
-  const dispatch = useDispatch()
-  const router = useRouter()
+    const dispatch = useDispatch()
+    const router = useRouter()
+
+    useEffect(() => {
+        const user = localStorage.getItem("user")
+        if (user) {
+        dispatch(addLoginDetails(JSON.parse(user)))
+        router.push("/customer/productList")   // Auto-redirect if logged in
+        }
+    }, [dispatch, router])
 
   const initialValues: SigninFormValues = { email: "", password: "" }
 
   const handleSubmit = async (values: SigninFormValues, { setSubmitting }: any) => {
-    try {
-      // Simulate API delay
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+        try {
+            // Simulate API delay
+            await new Promise((resolve) => setTimeout(resolve, 1000))
 
-      const { data } = await axios.post(
-        process.env.NEXT_PUBLIC_API_URL + "/signin",
-        values
-      )
+            const { data } = await axios.post(
+                process.env.NEXT_PUBLIC_API_URL + "/signin",
+                values
+            )
 
-      if (data?.isLoggedIn) {
-        dispatch(addLoginDetails(data))
-        toast.success("Welcome back! You have successfully signed in.")
-        router.push("/admin/dashboard") // redirect to dashboard
-      } else {
-        toast.error(data?.message || "Login failed. Please try again.")
-      }
-    } catch (error: any) {
-      toast.error("Sign in failed. Please check your credentials.")
-    } finally {
-      setSubmitting(false)
+            if (data?.isLoggedIn) {
+                dispatch(addLoginDetails(data))
+                localStorage.setItem("user", JSON.stringify(data))   // Save session
+                toast.success("Welcome back! You have successfully signed in.")
+                router.push("/customer/productList") 
+            } else {
+                toast.error(data?.message || "Login failed. Please try again.")
+            }
+        } catch (error: any) {
+            toast.error("Sign in failed. Please check your credentials.")
+        } finally {
+            setSubmitting(false)
+        }
     }
-  }
 
   return (
     <div
@@ -109,41 +117,30 @@ export default function Login() {
 
                     {/* Password */}
                     <div className="space-y-2">
-                    <Label htmlFor="password" className="flex items-center gap-2">
-                        <Lock className="w-4 h-4" />
-                        Password
-                    </Label>
-                    <div className="relative">
-                        <Field
-                        as={Input}
-                        id="password"
-                        name="password"
-                        type={showPassword ? "text" : "password"}
-                        placeholder="Enter your password"
+                        <Label htmlFor="password" className="flex items-center gap-2">
+                            <Lock className="w-4 h-4" />
+                            Password
+                        </Label>
+                        <div className="relative">
+                            <Field
+                            as={Input}
+                            id="password"
+                            name="password"
+                            type={"password"}
+                            placeholder="Enter your password"
+                            />
+                        </div>
+                        <ErrorMessage
+                            name="password"
+                            component="p"
+                            className="text-sm text-red-500"
                         />
-                        <button
-                        type="button"
-                        className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
-                        onClick={() => setShowPassword(!showPassword)}
-                        >
-                        {showPassword ? (
-                            <EyeOff className="w-4 h-4" />
-                        ) : (
-                            <Eye className="w-4 h-4" />
-                        )}
-                        </button>
-                    </div>
-                    <ErrorMessage
-                        name="password"
-                        component="p"
-                        className="text-sm text-red-500"
-                    />
                     </div>
 
                     {/* Forgot Password */}
                     <div className="flex items-center justify-between">
                     <Link
-                        href="/forgot-password"
+                        href="#"
                         className="text-sm text-purple-600 hover:underline"
                     >
                         Forgot password?

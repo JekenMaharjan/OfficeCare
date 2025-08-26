@@ -9,6 +9,7 @@ import { Search, ShoppingCart, Filter } from "lucide-react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { toast } from "sonner"
 import { CustomerLayout } from "@/components/customer/customerLayout"
+import { useAuth } from "@/hooks/useAuth"
 
 // TODO: Replace with actual data from backend
 const mockProducts = [
@@ -55,38 +56,41 @@ const mockProducts = [
 ]
 
 export default function ProductList() {
-  const [products] = useState(mockProducts)
-  const [searchTerm, setSearchTerm] = useState("")
-  const [categoryFilter, setCategoryFilter] = useState("all")
-  const [sortBy, setSortBy] = useState("name")
 
-  // TODO: Implement with backend API calls
-  const handleAddToCart = (productId: number) => {
-    console.log("Adding to cart:", productId)
-    // Backend call: POST /api/cart/add
-    toast("Product has been added to your cart successfully.")
-  }
+    useAuth()   //runs check on mount
 
-  const filteredProducts = products
-    .filter(product => {
-      const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase())
-      const matchesCategory = categoryFilter === "all" || product.category === categoryFilter
-      return matchesSearch && matchesCategory
-    })
-    .sort((a, b) => {
-      switch (sortBy) {
-        case "price":
-          return a.price - b.price
-        case "rating":
-          return b.rating - a.rating
-        default:
-          return a.name.localeCompare(b.name)
-      }
-    })
+    const [products] = useState(mockProducts)
+    const [searchTerm, setSearchTerm] = useState("")
+    const [categoryFilter, setCategoryFilter] = useState("all")
+    const [sortBy, setSortBy] = useState("name")
 
-  const categories = ["all", ...Array.from(new Set(products.map(p => p.category)))]
+    // TODO: Implement with backend API calls
+    const handleAddToCart = (productId: number) => {
+        console.log("Adding to cart:", productId)
+        // Backend call: POST /api/cart/add
+        toast("Product has been added to your cart successfully.")
+    }
 
-  return (
+    const filteredProducts = products
+        .filter(product => {
+        const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase())
+        const matchesCategory = categoryFilter === "all" || product.category === categoryFilter
+        return matchesSearch && matchesCategory
+        })
+        .sort((a, b) => {
+        switch (sortBy) {
+            case "price":
+            return a.price - b.price
+            case "rating":
+            return b.rating - a.rating
+            default:
+            return a.name.localeCompare(b.name)
+        }
+        })
+
+    const categories = ["all", ...Array.from(new Set(products.map(p => p.category)))]
+
+    return (
     <CustomerLayout>
         <div className="space-y-6">
         <div>
